@@ -1,0 +1,75 @@
+@media (max-width:900px){
+
+    .navbar-nav{
+        text-align: center;
+        font-size: smaller;
+        position: relative;
+        top: -100px;
+        left: -70px;
+
+    }
+
+    .navbar-brand h5{
+        color: #38c172;
+        position: relative;
+        font-size: smaller;
+        margin-left: 70px;
+        top: -105px;
+
+    }
+    .mybrand{
+        position: relative;
+        top: 40px;
+    }
+    .mybrand h5{
+        color: #38c172;
+        position: relative;
+        font-size: smaller;
+        margin-left: 70px;
+
+    }
+    .logo{
+        justify-self: right;
+        position: relative;
+        top: -45px;
+        left: 245px;
+    }
+    .navbar{
+       height: 100px;
+    }
+    .container{
+        margin-top: 30px;
+        padding-top: 5px;
+    }
+    .togol{
+        margin-left: -10px;
+        width: 20%;
+        position: relative;
+        top: -80px;
+
+    }
+    .navbar-toggler {
+        margin-left: -10px;
+        width: 20%;
+        margin-top: 20px;
+
+    }
+    .navbar-toggler .fas{
+        color: #38c172;
+
+    }
+    .collapse{
+        margin-top: 40px;
+    }
+    .card{
+        margin-top: 20px;
+    }
+}
+.sec
+{
+    width: 100%;
+}
+.navbar-nav{
+    margin-right: 40px;
+}
+

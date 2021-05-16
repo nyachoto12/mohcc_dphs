@@ -1,0 +1,79 @@
+@extends('layouts.header')
+
+@section('content')
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center bg-success text-light">Create a new request</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                   <div class="container">
+                      <form action="/p" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-8 offset-2">
+                             <div class="form-group row">
+                                 <label for="fullname" class="col-md-12 col-form-label ">{{ __('Full Name') }}</label>
+
+                                 <div class="col-md-12">
+                                     <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname">
+
+                                     @error('fullname')
+                                         <span class="invalid-feedback" role="alert">
+                                             <strong>{{ $message }}</strong>
+                                         </span>
+                                     @enderror
+                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                <label for="location" class="col-md-12 col-form-label ">{{ __('Where are you?') }}</label>
+
+                                <div class="col-md-12">
+                                    <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location">
+
+                                    @error('location')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                             <div class="form-group row">
+                                <label for="request" class="col-md-12 col-form-label ">{{ __('Why are you contacting a doctor?') }}</label>
+
+                                <div class="col-md-12">
+                                    <textarea name="request" id="request" cols="30" rows="5" class="form-control @error('request') is-invalid @enderror" value="{{ old('request') }}" required autocomplete="request"></textarea>
+
+
+                                    @error('request')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                             <div class="form-group row mb-0 mt-4">
+                                 <div class="col-md-6 offset-md-4">
+                                     <button type="submit" class="btn btn-primary">
+                                         {{ __('Send Request') }}
+                                     </button>
+                                 </div>
+                             </div>
+                            </div>
+                        </div>
+                      </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

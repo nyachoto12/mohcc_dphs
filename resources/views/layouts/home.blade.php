@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Ministry of Health and Child Care</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/admin.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    
+        <div class="header" id="myHeader">
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
+                <div class="container-fluid ">
+                    <!-- Brand -->
+                    <div class="row topnav">
+                        <div class="col-md-12" >
+    
+                            <img src="./img/logo.png" class=" logotop rounded-circle" height="50" alt="logo"
+                                loading="lazy" />
+                        </div>
+                        <div class="col-md-12" >
+    
+                            <img src="./img/logo.png" class=" logotopright rounded-circle" height="50" alt="logo"
+                                loading="lazy" />
+                        </div>
+                        <div class="col-md-12" >
+                            <a class="navbar-brand" href="#">
+                                <h5 class="mt-3 text-gray-dark" style=" ">Ministry of Health
+                                    and Child Care</h5>
+                            </a>
+                        </div>
+                       
+                    </div>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+    
+                        </ul>
+    
+                      
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm navbar-fixed-top">
+                <div class="container-fluid">
+                    {{-- <!-- Brand -->
+                    <div class="row mybrand">
+                        <div class="col-md-12" >
+    
+                            <img src="./img/logo.png" class=" logo rounded-circle" height="50" alt="logo"
+                                loading="lazy" />
+                        </div>
+                        <div class="col-md-12" >
+                            <a class="navbar-brand " href="#">
+                                <h5 class="mt-3" style=" ">Ministry of Health
+                                    and Child Care</h5>
+                            </a>
+                        </div>
+                    </div> --}}
+                    <button class="navbar-toggler togol mr-2" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon mr-1"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto text-light">
+                            <li class="nav-item ">
+                                <a class="nav-link active text-light " href="/"><span class=""
+                                        style="position: relative; padding-right : 7px">Home</span> </a>
+                            </li>
+    
+                            <li class="nav-item ">
+                                <a class="nav-link text-light " href="http://enurse.mohcc.org.zw:8084/enurse"><span class=""
+                                        style="position: relative; padding-right : 7px">Enurse</span> </a>
+                            </li>
+                            <li class="nav-item ">
+                                
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle nav-link text-light " data-toggle="dropdown" href="#" style="position: relative; padding-right : 7px"> MoHCC DPHS
+                                            </a>
+                                            <ul class="dropdown-menu pl-3">
+                                              <li><a href="/doctor">Doctor</a></li>
+                                              <li><a href="/patient">Patient</a></li>
+                                              <li><a href="#">Nurse</a></li>
+                                              <li><a href="#">Consultant</a></li>
+                                            </ul>
+                                          </li>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-light  " href="/"><span class=""
+                                        style="position: relative; padding-right : 7px">Contacts</span> </a>
+                            </li>
+    
+                            <li class="nav-item ">
+                                <a class="nav-link text-light " href="/about"><span class=""
+                                        style="position: relative; padding-right : 7px">News And Updates</span> </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-light " href="/contact"><span class=""
+                                        style="position: relative; padding-right : 7px">Resourc Centre</span> </a>
+                            </li>
+                          
+                        </ul>
+    
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Authentication Links -->
+                            @guest
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+    
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+    
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+    
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                                <!-- Icon -->
+    
+                            </li>
+                        @endguest
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <main class="py-4">
+
+                @yield('content')
+    
+            </main>
+        </div>
+   
+       
+    
+    <script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("myHeader");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+    </script>
+</body>
+
+</html>

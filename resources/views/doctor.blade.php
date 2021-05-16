@@ -1,0 +1,134 @@
+@extends('layouts.app')
+@section('content')
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <div class="card">
+                    <div class="card-header text-center text-light bg-success">Doctor's Dashboard</div>
+                    <div class="card-body ml-5">
+                        @if (session('status'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <!--Section: Minimal statistics cards-->
+                        <section>
+                            <div class="row ml-5">
+                                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                                    <div class="card">
+                                        @if (count($userz) == 0)
+                                            <a href={{ '/d/create' }}>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between px-md-1">
+                                                        <div>
+                                                            <p class="mb-0">Create Profile </p>
+                                                        </div>
+                                                        <div class="align-self-center">
+                                                            <i class="fas fa-clipboard-list text-info fa-3x"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="px-md-1">
+                                                        <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: 20%" aria-valuenow="80" aria-valuemin="0"
+                                                                aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @else
+                                            <a href={{ '/doctor/' . auth()->user()->id }}>
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between px-md-1">
+                                                        <div>
+                                                            <p class="mb-0">My Profile </p>
+                                                        </div>
+                                                        <div class="align-self-center">
+                                                            <i class="fas fa-clipboard-list text-info fa-3x"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="px-md-1">
+                                                        <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                                            <div class="progress-bar bg-info" role="progressbar"
+                                                                style="width: 20%" aria-valuenow="80" aria-valuemin="0"
+                                                                aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between px-md-1">
+                                                <div>
+                                                    <h3 class="text-warning">10</h3>
+                                                    <p class="mb-0">Scheduled Appointments</p>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fas fa-calendar-check fa-3x text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="px-md-1">
+                                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                                    <div class="progress-bar bg-warning" role="progressbar"
+                                                        style="width: 10%" aria-valuenow="35" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between px-md-1">
+                                                <div>
+                                                    <h3 class="text-success">5</h3>
+                                                    <p class="mb-0">Follow Ups</p>
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fas fa-check text-success fa-3x"></i>
+                                                </div>
+                                            </div>
+                                            <div class="px-md-1">
+                                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
+                                                    <div class="progress-bar bg-success" role="progressbar"
+                                                        style="width: 5%" aria-valuenow="60" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!--Section: Minimal statistics cards-->
+                        {{-- graphical representation of patients --}}
+                        <?php
+                        $dataPoints1 = [];
+                        $dataPoints2 = [];
+                        $updateInterval = 2000; //in millisecond
+                        $initialNumberOfDataPoints = 100;
+                        $x = time() * 1000 - $updateInterval * $initialNumberOfDataPoints;
+                        $y1 = 20;
+                        $y2 = 15;
+                        // generates first set of dataPoints
+                        for ($i = 0; $i < $initialNumberOfDataPoints; $i++) { $y1 +=round(rand(-2, 2)); $y2 +=round(rand(-2,
+                            2)); array_push($dataPoints1, ['x'=> $x, 'y' => $y1]);
+                            array_push($dataPoints2, ['x' => $x, 'y' => $y2]);
+                            $x += $updateInterval;
+                            }
+                            ?>
+                            <div id="chartContainer" style="height: 370px; width: 100%;">
+                            </div>
+                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -1,0 +1,147 @@
+/* Style the header */
+.header {
+    padding: 1px 2px;
+   
+  }
+  
+  /* Page content */
+  .content {
+    padding: 16px;
+  }
+  
+  /* The sticky class is added to the header with JS when it reaches its scroll position */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 102px;
+  }
+@media (max-width:900px){
+    body{
+        background-color: #fff;
+    }
+    nav{
+        width: 100%;
+    }
+   .navbar-expand-md{
+       height: 40%;
+       width: 100%;
+
+   }
+   .container-fluid{
+
+       width: 100%;
+   }
+
+    .mybrand{
+        position: relative;
+        top: 20px;
+    }
+    .mybrand h5{
+        color: #38c172;
+        position: relative;
+        font-size: 14px;
+        margin-left: 45px;
+        top: -80px;
+    }
+     .pic{
+         max-height: 140px;
+     }
+    .togol{
+        margin-left: -7px;
+        width: 15%;
+        position: relative;
+        top: -95px;
+        margin-right: 3px;
+
+    }
+    .logo{
+        justify-self: right;
+        position: relative;
+        top: -20px;
+        left: 250px;
+        min-height: 20px;
+
+    }
+    .topnav h5{
+        color: #38c172;
+        position: relative;
+        font-size: 14px;
+        margin-left: 40px;
+        top: -45px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .logotopright{
+        
+display: none;
+   }
+   .logotop{
+   
+    justify-self: right;
+        position: relative;
+        top: 10px;
+        left: 255px;
+        min-height: 20px;
+   }
+
+}
+@media(min-width: 1200px) {
+    .mybrand h5{
+        position : relative;
+        text-transform: uppercase;
+        top: -30px;
+        color: rgb(20, 14, 14);
+        left: 55px;
+    }
+    .topnav h5{
+        position : relative;
+        text-transform: uppercase;
+        top: -50px;
+        font-size: 60px;
+        font-weight: bolder;
+        color: #343a;
+        left: 180px;
+    }
+    .logo{
+        justify-self: left;
+        position: relative;
+        top: 20px;
+        left: 15px;
+
+    }
+    .logotopright{
+         position: relative;
+         margin-left: 111%;
+         top:30px;
+    }
+    .logotop{
+        
+        justify-self: left;
+        position: relative;
+        top: 78px;
+        left: 15px;
+
+    }
+    .container-fluid{
+        margin: 0 15px 0 15px;
+    }
+    nav{
+        height: 60px;
+    }
+    .navbar-nav{
+        
+        position:relative;
+        text-align: center;
+    }
+    .mid{
+        position: relative;
+        left: 20%;
+    }
+}
+
+
