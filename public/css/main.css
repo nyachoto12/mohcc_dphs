@@ -1,4 +1,4 @@
-@media (max-width:900px){
+/* @media (max-width:700px){
 
     .navbar-nav{
         text-align: center;
@@ -73,3 +73,38 @@
     margin-right: 40px;
 }
 
+@media (max-width: 700px){
+    .container-fluid{
+        background-color: #38c172;
+    }
+} */
+#footer-wrap{
+background-color: #38c172;
+}
+@media screen and (max-width: 700px) {
+  .navbar{
+      height:60px;
+  }
+  .logotop{
+    justify-self: right;
+    position: relative;
+    top: 10px;
+    padding-bottom: 5px;
+    left: 580px;
+}
+.logotopright{
+    justify-self: left;
+    position: relative;
+    top: -43px;
+    padding-bottom: 5px;
+    left: 50px;
+}
+.navbar-brand h5{
+    color: #38c172;
+    position: relative;
+    font-size: 20px;
+    text-align: end;
+    top: -98px;
+
+}
+}

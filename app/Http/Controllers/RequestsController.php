@@ -22,6 +22,16 @@ class RequestsController extends Controller
        //dd($reqs);
        return view('doctors.requestsAll',['req' => $reqs]);
     }
+    public function request($user)
+    {
+        $user = Auth::user()->patient()->pluck("user_id");
+        $reqs = DB::table('requests')->where('user_id', $user)->get();
+        //dd($reqs, $user);
+        return view('requests.index',[
+           'req' => $reqs,
+          
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.

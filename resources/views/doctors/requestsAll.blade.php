@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-11">
-                
+
                 <div class="card">
                     <a href={{ '/doctor/' . auth()->user()->id }}><h5  class="m-3">Back</h5></a>
 
@@ -35,31 +35,38 @@
                                                     @else
 
                                                        <div class="card-body">
-                                                        <table class="table table-bordered table-striped">
+                                                        <table class="table  table-striped">
                                                             <thead>
                                                               <tr>
                                                                 <th scope="col">Patient ID</th>
                                                                 <th scope="col">Full Name</th>
                                                                 <th scope="col">Location</th>
                                                                 <th scope="col">Chief Complaint</th>
+                                                                <th scope="col" >Actions</th>
                                                               </tr>
                                                             </thead>
-                                                            @foreach ($req as $r)
+                                                            
                                                             <tbody>
+                                                                @foreach ($req as $r)
                                                               <tr>
                                                                 <th scope="row">{{ $r->user_id }}</th>
                                                                 <td>{{ $r->fullname }}
                                                                 </td>
                                                                 <td>{{ $r->location }}</td>
                                                                 <td>{{ $r->request }}</td>
-                                                              </tr>
+                                                                <td><a href={{ '/doctor/' . auth()->user()->id }} class="text-white"><h5  class=" btn btn-success">Appoint</h5></a>
+                                                                <a href={{ '/doctor/' . auth()->user()->id }} class="text-white"><h5  class=" btn btn-danger">Remove</h5></a></td>
 
+
+                                                              </tr>
+                                                              @endforeach
                                                             </tbody>
+                                                            
                                                           </table>
 
 
 
-                                                    @endforeach
+                                                    
 
                                                     </table>
 

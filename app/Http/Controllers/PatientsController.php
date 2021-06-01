@@ -16,15 +16,16 @@ class PatientsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
+        // $this->middleware(['auth','verified']);
     }
     public function index($user)
     {
         $user = User::findOrfail($user);
         $reqs = DB::table('requests')->get();
-        $name = DB::table('requests')->pluck('fullname');
-        $apts = DB::table('appointments')->where('patient', $name)->get();
-       // dd($name, $apts);
+        $name = DB::table('doctors')->pluck('fullname');
+        $apts = DB::table('appointments')->where('fullname', $name)->get();
+        // dd($name, $apts);
         return view('patients.index',[
            'user' => $user,
            'req' => $reqs,

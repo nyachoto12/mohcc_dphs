@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app pb-3">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <!-- Brand -->
@@ -54,11 +54,42 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto mr-5">
                         <!-- Authentication Links -->
+                        <li class="nav-item ">
+                            <a class="nav-link active " href="#"><span class=""
+                                    style="position: relative; padding-right : 7px">E-Nurse</span> </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link active " href="#"><span class=""
+                                    style="position: relative; padding-right : 7px">Contacts</span> </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                MoHCC DPHS <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/doctor">
+                                    {{ __('Doctor') }}
+                                </a>
+                                <a class="dropdown-item" href="/patient">
+                                    {{ __('Patient') }}
+                                </a>
+
+                            </div>
+                        </li>
                         <li class="nav-item ">
                             <a class="nav-link active " href="/"><span class=""
                                     style="position: relative; padding-right : 7px">Home</span> </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link active " href="/covid"><span class=""
+                                    style="position: relative; padding-right : 7px">Covid 19 Updates</span> </a>
                         </li>
 
                         <li class="nav-item ">

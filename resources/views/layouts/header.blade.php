@@ -38,7 +38,7 @@
                     <ul style="list-style-type: none">
                         <li class="nav-item">
                             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#">
-                                <img src="./img/doctor.png" class="rounded-circle ml-4" height="90" alt=""
+                                <img src="{{ asset('./img/dev.jpg') }}" class="rounded-circle ml-4" height="90" alt=""
                                     loading="lazy" />
                             </a>
 
@@ -91,7 +91,7 @@
                 <div class="row ml-5">
                     <div class="col-md-4" style=" position : relative; left: 48px">
 
-                        <img src="./img/logo.png" class=" logo rounded-circle mt-2 pr-3" height="50" alt="logo"
+                        <img src={{ asset('./img/logo.png') }} class=" logo rounded-circle mt-2 pr-3" height="50" alt="logo"
                             loading="lazy" />
                     </div>
                     <div class="col-md-4" style="position: relative; left: -80px">

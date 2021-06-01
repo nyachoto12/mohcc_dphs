@@ -1,21 +1,21 @@
-/* Style the header */
+
 .header {
     padding: 1px 2px;
-   
+
   }
-  
+
   /* Page content */
   .content {
     padding: 16px;
   }
-  
+
   /* The sticky class is added to the header with JS when it reaches its scroll position */
   .sticky {
     position: fixed;
     top: 0;
     width: 100%
   }
-  
+
   /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
   .sticky + .content {
     padding-top: 102px;
@@ -77,11 +77,11 @@
         padding-right: 5px;
     }
     .logotopright{
-        
+
 display: none;
    }
    .logotop{
-   
+
     justify-self: right;
         position: relative;
         top: 10px;
@@ -90,7 +90,16 @@ display: none;
    }
 
 }
+
 @media(min-width: 1200px) {
+
+    a{
+        padding-bottom: 10px;
+    }
+    .slide img{
+        height: auto;
+
+    }
     .mybrand h5{
         position : relative;
         text-transform: uppercase;
@@ -102,10 +111,10 @@ display: none;
         position : relative;
         text-transform: uppercase;
         top: -50px;
-        font-size: 60px;
+        font-size: 46px;
         font-weight: bolder;
         color: #343a;
-        left: 180px;
+        left: 145px;
     }
     .logo{
         justify-self: left;
@@ -116,25 +125,26 @@ display: none;
     }
     .logotopright{
          position: relative;
-         margin-left: 111%;
-         top:30px;
+         margin-left: 105%;
+         top:25px;
     }
     .logotop{
-        
+
         justify-self: left;
         position: relative;
         top: 78px;
-        left: 15px;
+        left: 30px;
 
     }
     .container-fluid{
-        margin: 0 15px 0 15px;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     nav{
         height: 60px;
     }
     .navbar-nav{
-        
+
         position:relative;
         text-align: center;
     }
@@ -142,6 +152,10 @@ display: none;
         position: relative;
         left: 20%;
     }
-}
+    #myHeader{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+} 
 
 

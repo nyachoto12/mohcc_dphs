@@ -18,8 +18,27 @@
                         <!--Section: Minimal statistics cards-->
                         <section>
                             <div class="row">
+                                @if(count($apt) == 0)
                                 <div class="col-xl-3 col-sm-6 col-12 mb-4">
                                     <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between px-md-1">
+                                                <div>
+
+                                                    <p class="mb-0">No appointments</p>
+
+                                                </div>
+                                                <div class="align-self-center">
+                                                    <i class="fas fa-calendar-check fa-3x text-warning"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="col-xl-3 col-sm-6 col-12 mb-4" style="height: 20px">
+                                    <div class="card" >
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between px-md-1">
                                                 <div>
@@ -36,6 +55,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="col-xl-3 col-sm-6 col-12 mb-4">
                                     <div class="card">
                                         @if (count($req) == 0)

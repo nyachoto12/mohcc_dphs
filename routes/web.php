@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
+Route::get('/covid', 'App\Http\Controllers\HomeController@covid')->name('covid');
+Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
 Route::get('/email', function () {
     return new App\Mail\WelcomeMail();
 });
@@ -29,9 +32,7 @@ Route::get('mail', function () {
     return (new App\Notifications\StatusUpdate($order))
                 ->toMail($order->user);
 });
-Route::get('/contact', 'App\Http\Controllers\HomeController@contact')->name('contact');
-Route::get('/requests', 'App\Http\Controllers\RequestsController@index')->name('requestsAll');
-Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('about');
+
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/doctor', 'App\Http\Controllers\DoctorsController@doctor')->name('doctor');
@@ -42,6 +43,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('/apt/create', 'App\Http\Controllers\AppointmentsController@create');
     Route::post('/apt', 'App\Http\Controllers\AppointmentsController@store');
+    Route::get('/requests', 'App\Http\Controllers\RequestsController@index')->name('requestsAll');
 
 });
 Route::middleware(['auth', 'isPatient'])->group(function () {
@@ -51,6 +53,8 @@ Route::middleware(['auth', 'isPatient'])->group(function () {
 
     Route::get('/p/create', 'App\Http\Controllers\RequestsController@create');
     Route::post('/p', 'App\Http\Controllers\RequestsController@store');
+
+    Route::get('/patient/{user}/request', 'App\Http\Controllers\RequestsController@request');
 
     Route::get('/pat/create', 'App\Http\Controllers\PatientsController@create');
     Route::post('/pat', 'App\Http\Controllers\PatientsController@store');

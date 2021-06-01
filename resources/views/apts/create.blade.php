@@ -33,7 +33,7 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group row">
                                             <label for="fullname"
-                                                class="col-md-12 col-form-label ">{{ __('Full Name') }}</label>
+                                                class="col-md-12 col-form-label ">Doctor's Name</label>
 
                                             <div class="col-md-12">
                                                 <input id="fullname" type="text"
@@ -84,10 +84,10 @@
                                                 class="col-md-12 col-form-label ">{{ __('Appointment Date') }}</label>
 
                                             <div class="col-md-12">
-                                                <input id="date" type="text"
-                                                    class="form-control @error('date') is-invalid @enderror"
-                                                    name="date" value="{{ old('date') }}" required
-                                                    autocomplete="date">
+                                                <input class="date form-control" type="text" class="form-control @error('date') is-invalid @enderror"
+                                                name="date" value="{{ old('date') }}" required
+                                                autocomplete="date">>
+                                                    
 
                                                 @error('date')
                                                     <span class="invalid-feedback" role="alert">

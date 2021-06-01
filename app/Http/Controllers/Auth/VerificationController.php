@@ -27,16 +27,16 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    public function redirectTo(){
-        if(Auth::user()->role=='Doctor'){
-           return 'doctor';
-        }
-        else{
-            if(Auth::user()->role=='Patient'){
-                return 'patient';
-             }
-        }
-    }
+    // public function redirectTo(){
+    //     if(Auth::user()->role=='Doctor'){
+    //        return 'doctor';
+    //     }
+    //     else{
+    //         if(Auth::user()->role=='Patient'){
+    //             return 'patient';
+    //          }
+    //     }
+    // }
 
 
     /**

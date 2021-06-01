@@ -26,6 +26,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
         integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
         crossorigin="anonymous"></script>
+       <!-- Bootstrap CSS CDN -->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+       <!-- Our Custom CSS -->
+       <link rel="stylesheet" href="style.css">
+
+       <!-- Font Awesome JS -->
+       <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+       <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+       <style>
+           .side ul{
+
+               width: 50%;
+
+
+           }
+           .side ul li{
+
+              position: relative;
+              top: 9px;
+
+
+          }
+           #homeSubmenu li a{
+           padding: 10px;
+           }
+       </style>
 </head>
 
 <body>
@@ -37,10 +63,13 @@
                 <div class="list-group list-group-flush mx-3 mt-4">
                     <ul style="list-style-type: none">
                         <li class="nav-item">
-                            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#">
-                                <img src="{{ asset('./img/dev.jpg') }}" class="rounded-circle ml-4" height="90" alt=""
-                                    loading="lazy" />
-                            </a>
+                            <div class="card mr-5">
+                                <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#">
+                                    <img src="{{ asset('./img/dev.jpg') }}" class="m-2" height="90" alt=""
+                                        loading="lazy" />
+                                </a>
+                            </div>
+
 
                         <li><a class=" text-success">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -61,18 +90,48 @@
                         aria-current="true">
                         <i class="fas fa-tachometer-alt fa-fw me-3 "></i><span>Main dashboard</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>My Profile </span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Requests </span>
-                    </a>
+
+
+                    <ul class="list-unstyled side">
+
+                        <li class="">
+                            <a href="#homeSubmenu" class="list-group-item list-group-item-action py-2 ripple " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Request </span></a>
+
+                            <ul class="collapse list-unstyled ml-5" id="homeSubmenu">
+                                <li class="m-2">
+                                    <a href={{'/patient/'. auth()->user()->id.'/request'}} class="btn btn-success">My Requests</a>
+                                </li>
+                                <li class="m-2">
+                                    <a href="/p/create"class="btn btn-success">New Request</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Schedule</span>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>News and Updates</span>
                     </a>
+                    <ul class="list-unstyled side">
+
+                        <li class="">
+                            <a href="#profile" class="list-group-item list-group-item-action py-2 ripple " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Profile Management </span></a>
+
+                            <ul class="collapse list-unstyled ml-5" id="profile">
+                                <li class="m-2">
+                                    <a href="/requests" class="btn btn-success">Update</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
 
                 </div>
             </div>
@@ -186,6 +245,12 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript" src="js/admin.js"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
 
 </html>
