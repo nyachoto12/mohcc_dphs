@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
-
+ 
 </head>
 
 <body>
@@ -145,9 +145,18 @@
 
         </main>
     </div>
-    <script>
-
-    </script>
+  <!-- Google-Map -->
+ <script>
+    function myMap() {
+        var mapProp = {
+            center: new google.maps.LatLng(-17.82772, 31.05337),
+            zoom: 10,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    }
+</script>
+<script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.350367076942!2d31.051604414372772!3d-17.82220308082799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e0240231b9%3A0x9aeef814fb725f74!2sMukwati+Building!5e0!3m2!1sen!2szw!4v1494425057293"></script>
+<!-- End of Google-Map -->
 </body>
 
 </html>
