@@ -35,7 +35,7 @@
                     </a>
                 </div>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-white">
             @if (session('status'))
                 <div class="alert alert-success bg-danger" role="alert">
                     {{ session('status') }}
@@ -77,7 +77,7 @@
             </div>
             <div class="container-fluid mt-5">
                 <div class="row mt-5 bg-white">
-                    <div class="col-md-12 text-center m-3 bg-dark text-white p-3">
+                    <div class="col-md-12 text-center mr-3 bg-dark text-white p-3">
                         <h4>Services Offered at MoHCC DPHS</h4>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-md-12 pt-4">
                                         <h3 class="bg-success p-1 text-white" style="font-size: 25px">Simplify Communication</h3>
-                                        <p class=" mt-2"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                        <p class=" mt-2 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                                             Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
                                             Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
                                             placeat odio blanditiis rem!</p>
@@ -157,31 +157,31 @@
             </div>
             <div class="container-fluid bg-light">
                 <div class="row mt-4 bg-white">
-                    <div class="col-md-12 m-4 text-center">
-                        <h4>Get started with MoHCC DPHS</h4>
-                        <h5>Only a few steps and you are good to go</h5>
+                    <div class="col-md-12 mr-4 text-center bg-dark pt-2 pb-2 text-white">
+                        <h4 style="font-weight: bold">Get started with MoHCC DPHS</h4>
+                      <span class="text-success"> <h5>Only a few steps and you are good to go</h5></span>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="background: #d1e5da">
 
                         <div class="col-md-4 text-center">
-                            <h1>1</h1>
-                            <h2>Register</h2>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, voluptatibus eveniet reiciendis magnam illo hic provident soluta perferendis, ipsa blanditiis ut.
+                            <h1 class="m-2 p-2 text-success" style="font-weight: bolder">1</h1>
+                            <h2 class="bg-success p-2 text-white" style="">Registration</h2>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, voluptatibus eveniet reiciendis magnam illo hic provident soluta perferendis, ipsa blanditiis ut.
                                 Similique harum repudiandae nostrum, ut assumenda aut impedit nulla.</p>
 
                         </div>
                         <div class="col-md-4 text-center">
-                            <h1>2</h1>
-                            <h2>Create your profile</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione et rem accusantium, repellat saepe quas perspiciatis voluptatum provident.
+                            <h1 class="m-2 p-2 text-success" style="font-weight: bolder">2</h1>
+                            <h2 class="bg-success p-2 text-white" >Create your profile</h2>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione et rem accusantium, repellat saepe quas perspiciatis voluptatum provident.
                                  Reiciendis aut sit, eius amet ea aliquam tempore odio expedita animi illum?</p>
 
                         </div>
                         <div class="col-md-4 text-center">
-                            <h1>3</h1>
-                            <h2>Access your dashboard</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, similique sapiente eius, omnis, animi sit placeat rem voluptatum quaerat debitis odio consectetur ex maiores
+                            <h1 class="m-2 p-2 text-success" style="font-weight: bolder">3</h1>
+                            <h2 class="bg-success p-2 text-white" >Access your dashboard</h2>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, similique sapiente eius, omnis, animi sit placeat rem voluptatum quaerat debitis odio consectetur ex maiores
                                 molestias laborum provident voluptate suscipit et.</p>
 
                         </div>
@@ -202,9 +202,9 @@
                             </div>
                     </div>
                     <div class="col-md-6">
-                        <h3 class="m-5">Having any issues with MoCC DPHS, let us know below</h3>
+                        <h3 class="m-5">Having any issues with MoHCC DPHS, let us know below</h3>
 
-                                <form action="/pat" method="post" enctype="multipart/form-data">
+                                <form action="#" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row ">
                                         <div class="col-md-12 ">

@@ -27,18 +27,18 @@
 
 <body>
     <div id="app pb-3">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
             <div class="container-fluid">
                 <!-- Brand -->
                 <div class="row mybrand">
                     <div class="col-md-12" >
 
-                        <img src="./img/logo.png" class=" logo rounded-circle" height="50" alt="logo"
+                        <img src="./img/logo.png" class=" logo rounded-circle" style="background: transparent" height="50" alt="logo"
                             loading="lazy" />
                     </div>
                     <div class="col-md-12" >
                         <a class="navbar-brand " href="#">
-                            <h5 class="mt-3" style=" ">Ministry of Health
+                            <h5 class="mt-3 text-success" style=" ">Ministry of Health
                                 and Child Care</h5>
                         </a>
                     </div>
@@ -56,22 +56,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto mr-5">
+                    <ul class="navbar-nav ml-auto mr-5 text-white">
                         <!-- Authentication Links -->
-                        <li class="nav-item ">
-                            <a class="nav-link active " href="#"><span class=""
-                                    style="position: relative; padding-right : 7px">E-Nurse</span> </a>
-                        </li>
-
-                        <li class="nav-item ">
-                            <a class="nav-link active " href="#"><span class=""
-                                    style="position: relative; padding-right : 7px">Contacts</span> </a>
-                        </li>
-
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                MoHCC DPHS <span class="caret"></span>
+                                MoHCC DPHS <span class="caret text-success"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -85,6 +75,17 @@
                             </div>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link active " href="#"><span class=""
+                                    style="position: relative; padding-right : 7px">E-Nurse</span> </a>
+                        </li>
+{{--
+                        <li class="nav-item ">
+                            <a class="nav-link active " href="#"><span class=""
+                                    style="position: relative; padding-right : 7px">Contacts</span> </a>
+                        </li>
+ --}}
+
+                        <li class="nav-item ">
                             <a class="nav-link active " href="/"><span class=""
                                     style="position: relative; padding-right : 7px">Home</span> </a>
                         </li>
@@ -94,10 +95,10 @@
                                     style="position: relative; padding-right : 7px">Covid 19 Updates</span> </a>
                         </li>
 
-                        <li class="nav-item ">
+                        {{-- <li class="nav-item ">
                             <a class="nav-link " href="/about"><span class=""
                                     style="position: relative; padding-right : 7px">About Us</span> </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item ">
                             <a class="nav-link " href="/contact"><span class=""
                                     style="position: relative; padding-right : 7px">Contact Us</span> </a>
