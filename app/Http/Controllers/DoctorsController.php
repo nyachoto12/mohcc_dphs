@@ -22,6 +22,8 @@ class DoctorsController extends Controller
     public function index($user)
     {
         $user = User:: find($user);
+        //get all the appointments
+        $apts = DB::table('appointments')->get();
         // getting all patients
         $users = DB::table('users')->where('role', 'Doctor')->get();
         //getting requests filtered by location
@@ -35,7 +37,8 @@ class DoctorsController extends Controller
         return view('doctors.index',[
             'user' => $user,
              'req' => $requests,
-             'kutya' => $users,        ]);
+             'apt' => $apts,
+            ]);
 
     }
     public function doctor(){

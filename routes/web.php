@@ -32,7 +32,13 @@ Route::get('mail', function () {
     return (new App\Notifications\StatusUpdate($order))
                 ->toMail($order->user);
 });
+Route::get('details', function () {
 
+    $ip = '50.90.0.1';
+    $data = \Location::get($ip);
+    dd($data);
+
+});
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/doctor', 'App\Http\Controllers\DoctorsController@doctor')->name('doctor');
@@ -44,6 +50,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/apt/create', 'App\Http\Controllers\AppointmentsController@create');
     Route::post('/apt', 'App\Http\Controllers\AppointmentsController@store');
     Route::get('/requests', 'App\Http\Controllers\RequestsController@index')->name('requestsAll');
+
 
 });
 Route::middleware(['auth', 'isPatient'])->group(function () {
@@ -58,4 +65,11 @@ Route::middleware(['auth', 'isPatient'])->group(function () {
 
     Route::get('/pat/create', 'App\Http\Controllers\PatientsController@create');
     Route::post('/pat', 'App\Http\Controllers\PatientsController@store');
+    Route::get('details', function () {
+
+        $ip = request()->ip();;
+        $data = \Location::get($ip);
+        dd($data);
+
+    });
 });

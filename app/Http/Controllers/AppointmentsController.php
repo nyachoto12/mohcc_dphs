@@ -16,7 +16,8 @@ class AppointmentsController extends Controller
      */
     public function index()
     {
-        //
+        $apts = DB::table('appointments')->get();
+        return view('apts.index',['apt' => $apts]);
     }
 
     /**

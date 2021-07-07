@@ -94,28 +94,7 @@
 
                             </div>
                         </section>
-                        <!--Section: Minimal statistics cards-->
-                        {{-- graphical representation of patients --}}
-                        <?php
-                        $dataPoints1 = [];
-                        $dataPoints2 = [];
-                        $updateInterval = 2000; //in millisecond
-                        $initialNumberOfDataPoints = 100;
-                        $x = time() * 1000 - $updateInterval * $initialNumberOfDataPoints;
-                        $y1 = 20;
-                        $y2 = 15;
-                        // generates first set of dataPoints
-                        for ($i = 0; $i < $initialNumberOfDataPoints; $i++) { $y1 +=round(rand(-2, 2)); $y2 +=round(rand(-2,
-                            2)); array_push($dataPoints1, ['x'=> $x, 'y' => $y1]);
-                            array_push($dataPoints2, ['x' => $x, 'y' => $y2]);
-                            $x += $updateInterval;
-                            }
-                            ?>
-
-                            <div id="chartContainer" style="height: 370px; width: 100%;">
-
-                            </div>
-                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                   
                     </div>
                 </div>
             </div>

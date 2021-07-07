@@ -29,6 +29,24 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+        <link href="{{ asset('./css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.jqueryui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/datatable.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/dt.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+     <style>
+         div.dataTables_wrapper {
+
+        margin: 0 auto;
+
+    }
+     </style>
+
 </head>
 
 <body>
@@ -189,13 +207,42 @@
     </main>
     <!--Main layout-->
     <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript" src="js/admin.js"></script>
+    <script type="text/javascript" src="{{asset('js/admin.js')}}"></script>
     <script>
-        $('.date').datepicker({  
+        $('.date').datepicker({
        format: 'mm-dd-yyyy'
-     });  
+     });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    pageLength: 10,
+                    lengthMenu: [5, 10, 25, 50],
+                    "scrollX": true,
+
+                    buttons: [
+                        'pageLength', 'copy', 'csv', 'excel',  'print'
+                    ]
+
+                }
+        //         "language": {
+        //     "lengthMenu": "Display _MENU_ records per page",
+        //     "zeroRecords": "Nothing found - sorry",
+        //     "info": "Showing page _PAGE_ of _PAGES_",
+        //     "infoEmpty": "No records available in your training data table",
+        //     "infoFiltered": "(filtered from _MAX_ total records)"
+        // }
+            );
+            $('.buttons-excel, .buttons-print, .buttons-pdf, .buttons-csv, .buttons-copy, .buttons-pageLength').each(function () {
+                $(this).removeClass('btn-default').addClass('mt-3 mb-3');
+            });
+        });
+
     </script>
 </body>
 

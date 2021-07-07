@@ -26,6 +26,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
         integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
         crossorigin="anonymous"></script>
+
+
+    <link href="{{ asset('./css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/buttons.jqueryui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/datatable.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/dt.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('./css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+     <style>
+         div.dataTables_wrapper {
+
+        margin: 0 auto;
+
+    }
+     </style>
 </head>
 
 <body>
@@ -85,7 +103,7 @@
                     aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
-                
+
 
                 <!-- Brand -->
                 <div class="row ml-5">
@@ -175,7 +193,7 @@
 
     <!--Main layout-->
 
-    <main class="py-4" style="margin-top: 48px">
+    <main class="py-4 m-4" >
         @yield('content')
     </main>
     <!--Main layout-->
@@ -183,6 +201,47 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript" src="js/admin.js"></script>
+
+
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/datatable.min.js') }}"></script>
+    <script src="{{ asset('js/dt.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('js/jszip.min.js') }}"></script>
+    <script src="{{ asset('js/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('js/buttons.print.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script>
+
+        $(document).ready(function () {
+            $('#data').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    pageLength: 10,
+                    lengthMenu: [5, 10, 25, 50],
+                    "scrollX": true,
+
+                    buttons: [
+                        'pageLength', 'copy', 'csv', 'excel',  'print'
+                    ]
+
+                }
+        //         "language": {
+        //     "lengthMenu": "Display _MENU_ records per page",
+        //     "zeroRecords": "Nothing found - sorry",
+        //     "info": "Showing page _PAGE_ of _PAGES_",
+        //     "infoEmpty": "No records available in your training data table",
+        //     "infoFiltered": "(filtered from _MAX_ total records)"
+        // }
+            );
+            $('.buttons-excel, .buttons-print, .buttons-pdf, .buttons-csv, .buttons-copy, .buttons-pageLength').each(function () {
+                $(this).removeClass('btn-default').addClass('mt-3 mb-3');
+            });
+        });
+
+    </script>
 </body>
 
 </html>

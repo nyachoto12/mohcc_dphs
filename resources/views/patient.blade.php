@@ -1,7 +1,41 @@
-@extends('layouts.patient')
+@extends('layouts.pat')
 
 @section('content')
 
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One - Set the background image for this slide in the line below -->
+        <div class="carousel-item active" style="background-image: url({{ asset('./img/p1.jpg') }})">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 text-danger" style="font-weight : bold">Stay Cautiously</h3>
+            <p class="lead text-primary">Covid-19 is real, please do stay away from gatherings and do not make unneccessary movements. You dont want to end up in hospitals</p>
+          </div>
+        </div>
+        <!-- Slide Two - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url({{ asset('./img/p2.jpeg') }})">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 text-danger" style="font-weight : bold">Stay At Home</h3>
+            <p class="lead text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, nemo possimus commodi porro iusto enim voluptatem mollitia, excepturi fuga, neque ea vero eaque
+                assumenda amet quis nobis doloribus fugit rerum?</p>
+          </div>
+        </div>
+        <!-- Slide Three - Set the background image for this slide in the line below -->
+        <div class="carousel-item" style="background-image: url({{ asset('./img/p3.jpg') }})">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 text-danger" style="font-weight : bold">Say No to the Spreading of COVID-19</h3>
+            <p class="lead text-primary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quas deleniti,
+                excepturi qui tempora aspernatur debitis eaque obcaecati error autem veritatis
+                placeat rem quidem dolorem sit ducimus consequuntur eligendi corrupti?</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-11">
@@ -139,9 +173,12 @@
                         </section>
 
                     </div>
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 </div>
             </div>
         </div>
+
     </div>
 
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 @endsection
