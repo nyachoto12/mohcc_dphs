@@ -32,11 +32,13 @@ class DoctorsController extends Controller
         $users2 = DB::table('patients')
             ->join('requests', 'patients.id', '=', 'requests.user_id')
             ->get();
-            $requests = DB::table('requests')->pluck('request');
+            $requests = DB::table('requests')->get();
+            $request = DB::table('requests')->pluck('request');
         //dd($users);
         return view('doctors.index',[
             'user' => $user,
              'req' => $requests,
+             
              'apt' => $apts,
             ]);
 

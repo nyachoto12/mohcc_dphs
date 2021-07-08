@@ -49,6 +49,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     Route::get('/apt/create', 'App\Http\Controllers\AppointmentsController@create');
     Route::post('/apt', 'App\Http\Controllers\AppointmentsController@store');
+    Route::get('/appointment', 'App\Http\Controllers\AppointmentsController@index')->name('index');
+
     Route::get('/requests', 'App\Http\Controllers\RequestsController@index')->name('requestsAll');
 
 

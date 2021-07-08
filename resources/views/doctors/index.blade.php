@@ -9,7 +9,7 @@
                     <div class="card-header text-center text-light bg-success">Dr .{{ $user->doctor->fullname }}'s Dashboard
                     </div>
 
-                    <div class="card-body ml-5">
+                    <div class="card-body m-5">
                         @if (session('status'))
                             <div class="alert alert-danger" role="alert">
                                 {{ session('status') }}
@@ -18,7 +18,7 @@
 
                         <!--Section: Minimal statistics cards-->
                         <section>
-                            <div class="row ml-5">
+                            <div class="row ">
                                 <div class="col-xl-4 col-sm-6 col-12 mb-4">
                                     <div class="card">
                                         <div class="card-body">
@@ -29,7 +29,7 @@
                                                             <h3 class="text-info">No requests yet</h3>
                                                         @else
                                                             <h3 class="text-info">{{ count($req) }}</h3>
-                                                            <p class="mb-0">Pending Requests</p>
+                                                            <p class="mb-0">Total Requests</p>
                                                         @endif
 
 
@@ -49,24 +49,23 @@
                                 </div>
                                 <div class="col-xl-4 col-sm-6 col-12 mb-4">
                                     <div class="card">
+                                        <a href={{ '/appointment'}}>
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between px-md-1">
                                                 <div>
-                                                    <h3 class="text-warning">0</h3>
+                                                    @if (count($apt) == 0)
+                                                    <h4 class="text-danger">No scheduled appointments</h4>
+                                                @else
+                                                    <h3 class="text-success">{{ count($apt) }}</h3>
                                                     <p class="mb-0">Scheduled Appointments</p>
-                                                </div>
-                                                <div class="align-self-center">
-                                                    <i class="fas fa-calendar-check fa-3x text-warning"></i>
-                                                </div>
+
+                                                @endif
+
+
                                             </div>
-                                            {{-- <div class="px-md-1">
-                                                <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                                    <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 10%" aria-valuenow="35" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-sm-6 col-12 mb-4">
@@ -94,9 +93,49 @@
 
                             </div>
                         </section>
-                   
+
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row m-5">
+            <h4 class="ml-5">Pending Requests</h4>
+            <table class="table table-striped ml-5" id="data">
+                <thead>
+                    <tr>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Chief Complaint</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($req as $r)
+
+                    <tr>
+                        <th scope="row">{{ $r->user_id }}</th>
+                        <td>{{ $r->fullname }}
+                        </td>
+                        <td>{{ $r->location }}</td>
+                        <td>{{ $r->request }}</td>
+                        <td><a href={{ '/apt/create'}} class="text-white">
+                                <h5 class=" btn btn-success">Appoint</h5>
+                            </a>
+                            <a href={{ '#' }} class="text-white">
+                                <h5 class=" btn btn-danger">Remove</h5>
+                            </a>
+                        </td>
+                    </tr>
+                </a>
+
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h6>Developed and Designed by <span class="text-success">Ngonidzashe Nyachoto</span></h6>
             </div>
         </div>
     </div>

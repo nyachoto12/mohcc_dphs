@@ -26,6 +26,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        @foreach ($doc as $doc)
+
                         <div class="container " style="position: relative; left: 3%">
                             <form action="/apt" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -38,7 +40,7 @@
                                             <div class="col-md-12">
                                                 <input id="fullname" type="text"
                                                     class="form-control @error('fullname') is-invalid @enderror"
-                                                    name="fullname" value="{{ old('fullname') }}" required
+                                                    name="fullname" value="{{Auth::user()->name}}" required
                                                     autocomplete="fullname">
 
                                                 @error('fullname')
@@ -86,8 +88,8 @@
                                             <div class="col-md-12">
                                                 <input class="date form-control" type="text" class="form-control @error('date') is-invalid @enderror"
                                                 name="date" value="{{ old('date') }}" required
-                                                autocomplete="date">>
-                                                    
+                                                autocomplete="date">
+
 
                                                 @error('date')
                                                     <span class="invalid-feedback" role="alert">
@@ -173,6 +175,8 @@
                                         </div>
 
                                     </div> --}}
+
+                        @endforeach
                                     <div class="form-group row mb-0 mt-4">
                                         <div class="col-md-6 offset-md-4">
                                             <button type="submit" class="btn btn-primary">

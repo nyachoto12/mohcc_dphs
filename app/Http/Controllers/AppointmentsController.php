@@ -29,10 +29,11 @@ class AppointmentsController extends Controller
     {
           //getting requests filtered by location
           $reqs = DB::table('requests')->get();
+          $users = DB::table('users')->where('role', 'Doctor')->get();
 
           //dd($reqs);
 
-          return view('apts.create',['req' => $reqs]);
+          return view('apts.create',['req' => $reqs, 'doc' => $users]);
     }
 
     /**
