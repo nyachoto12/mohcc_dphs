@@ -76,7 +76,7 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <a href={{'/patient/'. auth()->user()->id}}>
+                                            <a href={{'/p/'. auth()->user()->id}}>
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between px-md-1">
                                                         <div>

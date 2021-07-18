@@ -4,7 +4,7 @@
 
         <div class="col-md-12 ">
             <div class="row">
-                <a href={{ '/patient/' . auth()->user()->id }}>
+                <a href={{ '/p/' . auth()->user()->id }}>
                     <h5 class="mt-5">Back</h5>
                 </a>
                 <a href="/p/create">
@@ -23,10 +23,10 @@
             <table class="table table-striped ml-5" id="data">
                 <thead>
                     <tr>
-                        <th scope="col">Patient ID</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Chief Complaint</th>
+                        <th scope="col">Request</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>

@@ -35,7 +35,7 @@
                                     <div class="col-md-6 ">
                                         <div class="form-group row">
                                             <label for="fullname"
-                                                class="col-md-12 col-form-label ">Doctor's Name</label>
+                                                class="col-md-12 col-form-label ">Username</label>
 
                                             <div class="col-md-12">
                                                 <input id="fullname" type="text"
@@ -55,10 +55,15 @@
                                                 class="col-md-12 col-form-label ">{{ __('Patient Name') }}</label>
 
                                             <div class="col-md-12">
-                                                <input id="patient" type="text"
-                                                    class="form-control @error('patient') is-invalid @enderror"
-                                                    name="patient" value="{{ old('patient') }}" required
-                                                    autocomplete="patient">
+                                                <select id="patient" class="form-control text-success" name="patient"
+                                                required>
+                                                <option value="">Select A Patient</option>
+
+                                                @foreach($patient as $facility)
+                                                 <?php echo "<option value='$facility->fullname' id='$facility->fullname'>$facility->fullname</option>";
+                                                 ?>
+                                                @endforeach
+                                            </select>
 
                                                 @error('patient')
                                                     <span class="invalid-feedback" role="alert">
@@ -68,7 +73,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="appointment" class="col-md-12 col-form-label ">{{ __('Chief Complaint') }}</label>
+                                            <label for="appointment" class="col-md-12 col-form-label ">Message</label>
 
                                             <div class="col-md-12">
                                                 <textarea name="appointment" id="appointment" cols="30" rows="5" class="form-control @error('appointment') is-invalid @enderror" value="{{ old('appointment') }}" required autocomplete="appointment"></textarea>
@@ -86,7 +91,7 @@
                                                 class="col-md-12 col-form-label ">{{ __('Appointment Date') }}</label>
 
                                             <div class="col-md-12">
-                                                <input class="date form-control" type="text" class="form-control @error('date') is-invalid @enderror"
+                                                <input class="date form-control" type="date" class="form-control @error('date') is-invalid @enderror"
                                                 name="date" value="{{ old('date') }}" required
                                                 autocomplete="date">
 

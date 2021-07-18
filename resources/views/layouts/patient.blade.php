@@ -105,7 +105,7 @@
                     </a>
 
 
-                    <ul class="list-unstyled side">
+                    {{-- <ul class="list-unstyled side">
 
                         <li class="">
                             <a href="#homeSubmenu" class="list-group-item list-group-item-action py-2 ripple " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -122,12 +122,12 @@
                             </ul>
                         </li>
 
-                    </ul>
+                    </ul> --}}
 
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                    {{-- <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Schedule</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                    </a> --}}
+                    <a href="/patient" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>News and Updates</span>
                     </a>
                     <ul class="list-unstyled side">
@@ -138,7 +138,7 @@
 
                             <ul class="collapse list-unstyled ml-5" id="profile">
                                 <li class="m-2">
-                                    <a href="/requests" class="btn btn-success">Update</a>
+                                    <a href="/patient/{{Auth::user()->id}}/edit" class="btn btn-success">Update</a>
                                 </li>
 
                             </ul>

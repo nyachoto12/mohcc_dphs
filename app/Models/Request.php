@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Request extends Model
 {
     protected $fillable = [
-        'fullname', 'location', 'request',
+        'fullname', 'phone','speciality','location', 'request',
     ];
 
     protected $guaded = [];

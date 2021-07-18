@@ -6,7 +6,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-12" style="position: relative;">
                 <div class="card">
-                    <div class="card-header text-center bg-success text-light">Please complete setting up your profile</div>
+                    <div class="card-header text-center bg-success text-light">Doctor {{$user->doctor->fullname}}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -15,8 +15,9 @@
                             </div>
                         @endif
                         <div class="container " style="position: relative; left: 3%">
-                            <form action="/d" method="post" enctype="multipart/form-data">
+                            <form action="/doctor/{{$user->doctor->id}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('PATCH')
                                 <div class="row d-flex">
                                     <div class="col-md-6 ">
                                         <div class="form-group row">
@@ -26,7 +27,7 @@
                                             <div class="col-md-12">
                                                 <input id="fullname" type="text"
                                                     class="form-control @error('fullname') is-invalid @enderror"
-                                                    name="fullname" value="{{ old('fullname') }}" required
+                                                    name="fullname" value="{{ old('fullname') ?? $user->doctor->fullname }}" required
                                                     autocomplete="fullname">
 
                                                 @error('fullname')
@@ -43,7 +44,7 @@
                                             <div class="col-md-12">
                                                 <input id="age" type="text"
                                                     class="form-control @error('age') is-invalid @enderror"
-                                                    name="age" value="{{ old('age') }}" required
+                                                    name="age" value="{{ old('age') ?? $user->doctor->age }}" required
                                                     autocomplete="age">
 
                                                 @error('age')
@@ -57,7 +58,7 @@
                                             <label for="phone" class="col-md-12 col-form-label ">{{ __('Phone') }}</label>
 
                                             <div class="col-md-12">
-                                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+                                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') ?? $user->doctor->phone }}" required autocomplete="phone">
 
                                                 @error('phone')
                                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +72,7 @@
 
                                             <div class="col-md-12">
 
-                                                <select id="gender" name="gender" class="form-control ] @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
+                                                <select id="gender" name="gender" class="form-control ] @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') ?? $user->doctor->gender }}" required autocomplete="gender" autofocus>
                                                     <option value="Doctor">Male</option>
                                                     <option value="Patient">Female</option>
 
@@ -90,7 +91,7 @@
                                             <div class="col-md-12">
                                                 <input id="location" type="text"
                                                     class="form-control @error('location') is-invalid @enderror"
-                                                    name="location" value="{{ old('location') }}" required
+                                                    name="location" value="{{ old('location') ?? $user->doctor->location }}" required
                                                     autocomplete="location">
 
                                                 @error('location')
@@ -107,8 +108,7 @@
                                             <div class="col-md-12">
                                                 <select id="speciality" class="form-control text-success" name="speciality"
                                                 required>
-                                                <option value="">Select Speciality</option>
-
+                                                <option value="{{ $user->doctor->speciality }}">{{ $user->doctor->speciality }}</option>
                                                 @foreach($speciality as $facility)
                                                  <?php echo "<option value='$facility->name' id='$facility->name'>$facility->name</option>";
                                                  ?>
@@ -183,8 +183,8 @@
                                     </div> --}}
                                     <div class="form-group row mb-0 mt-4">
                                         <div class="col-md-6 offset-md-4">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Save Profile') }}
+                                            <button type="submit" class="btn btn-success">
+                                                {{ __('Update Profile') }}
                                             </button>
                                         </div>
                                     </div>

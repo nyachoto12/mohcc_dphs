@@ -23,22 +23,26 @@ class DoctorsController extends Controller
     {
         $user = User:: find($user);
         //get all the appointments
-        $apts = DB::table('appointments')->get();
+        $userz2 = Auth::user()->name;
+        $apts = DB::table('appointments')->where('fullname', $userz2)->get();
+
         // getting all patients
-        $users = DB::table('users')->where('role', 'Doctor')->get();
+        $userz = Auth::user()->id;
+        $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
+        //$users5 = DB::table('users')->where('role', 'Doctor')->get();
         //getting requests filtered by location
-        $reqs = DB::table('requests')->get();
+        $reqs = DB::table('requests')->where('speciality', $users)->get();
         // joining patient and requests table
         $users2 = DB::table('patients')
             ->join('requests', 'patients.id', '=', 'requests.user_id')
             ->get();
             $requests = DB::table('requests')->get();
             $request = DB::table('requests')->pluck('request');
-        //dd($users);
+          //dd($users,$reqs);
         return view('doctors.index',[
             'user' => $user,
              'req' => $requests,
-             
+            'patient' => $reqs,
              'apt' => $apts,
             ]);
 
@@ -62,7 +66,16 @@ class DoctorsController extends Controller
      */
     public function create()
     {
-        return view('doctors.create');
+        $userz = Auth::user()->id;
+        // $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
+        // //$users5 = DB::table('users')->where('role', 'Doctor')->get();
+        // //getting requests filtered by location
+        // $reqs = DB::table('requests')->where('speciality', $users)->get();
+        $speciality = DB::table('specialists')->get();
+        return view('doctors.create',
+        ['speciality'=> $speciality,
+        //  'patient' => $req
+        ]);
     }
 
     /**
@@ -75,6 +88,7 @@ class DoctorsController extends Controller
     {
         $data = request()->validate([
             'fullname' => 'required',
+            'phone' => 'required',
             'age' => 'required',
             'gender' => 'required',
             'location' => 'required',
@@ -83,6 +97,7 @@ class DoctorsController extends Controller
           ]);
           auth()->user()->doctor()->create([
               'fullname' => $data['fullname'],
+              'phone' => $data['phone'],
               'age' => $data['age'],
               'gender' => $data['gender'],
               'location' => $data['location'],
@@ -110,9 +125,10 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Models\User $user)
     {
-        //
+        $speciality = DB::table('specialists')->get();
+       return view('doctors.edit', compact('user','speciality'));
     }
 
     /**
@@ -122,9 +138,21 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Models\User $user)
     {
-        //
+        $data = request()->validate([
+            'fullname' => 'required',
+            'phone' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'location' => 'required',
+            'speciality' => 'required',
+
+          ]);
+         // dd($data);
+         auth()->user()->doctor()->update($data);
+
+          return redirect('/d/'. auth()->user()->id)->with('status','Profile Was Updated Successfully');
     }
 
     /**

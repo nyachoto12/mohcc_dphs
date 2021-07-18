@@ -29,7 +29,7 @@ class RequestsController extends Controller
         //dd($reqs, $user);
         return view('requests.index',[
            'req' => $reqs,
-          
+
         ]);
     }
 
@@ -40,7 +40,8 @@ class RequestsController extends Controller
      */
     public function create()
     {
-        return view('requests.create');
+        $speciality = DB::table('specialists')->get();
+        return view('requests.create',['speciality'=>$speciality]);
     }
 
     /**
@@ -53,11 +54,15 @@ class RequestsController extends Controller
     {
         $data = request()->validate([
             'fullname' => 'required',
+            'phone' => 'required',
+            'speciality' => 'required',
             'location' => 'required',
             'request' => 'required'
           ]);
           auth()->user()->request()->create([
               'fullname' => $data['fullname'],
+              'phone' => $data['phone'],
+              'speciality' => $data['speciality'],
               'location' => $data['location'],
               'request' => $data['request'],
           ]);

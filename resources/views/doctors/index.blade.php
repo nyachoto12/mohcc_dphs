@@ -5,16 +5,17 @@
     <div class="container-fluid" >
         <div class="row justify-content-center" >
             <div class="col-md-11">
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
                 <div class="card" >
                     <div class="card-header text-center text-light bg-success">Dr .{{ $user->doctor->fullname }}'s Dashboard
                     </div>
 
                     <div class="card-body m-5">
-                        @if (session('status'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+
 
                         <!--Section: Minimal statistics cards-->
                         <section>
@@ -99,15 +100,15 @@
             </div>
         </div>
         <div class="row m-5">
-            <h4 class="ml-5">Pending Requests</h4>
+            <h4 class="ml-5">Total Requests</h4>
             <table class="table table-striped ml-5" id="data">
                 <thead>
                     <tr>
                         <th scope="col">Patient ID</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Chief Complaint</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Request</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,12 +120,8 @@
                         </td>
                         <td>{{ $r->location }}</td>
                         <td>{{ $r->request }}</td>
-                        <td><a href={{ '/apt/create'}} class="text-white">
-                                <h5 class=" btn btn-success">Appoint</h5>
-                            </a>
-                            <a href={{ '#' }} class="text-white">
-                                <h5 class=" btn btn-danger">Remove</h5>
-                            </a>
+                        <td>
+                            <appoint></appoint>
                         </td>
                     </tr>
                 </a>

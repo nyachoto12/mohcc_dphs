@@ -17,13 +17,14 @@ class CreateDoctorsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('fullname');
+            $table->string('phone');
             $table->string('age');
             $table->string('gender');
             $table->string('location');
             $table->string('speciality');
             $table->timestamps();
             $table->index('user_id');
-    
+
         });
     }
 

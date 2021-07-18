@@ -2,7 +2,7 @@
 @section('content')
     <div class="row  ml-5">
         <div class="col-md-12 ">
-            <a href={{ '/doctor/' . auth()->user()->id }}>
+            <a href={{ '/d/' . auth()->user()->id }}>
                 <h5 class="mt-5">Back</h5>
             </a>
 
@@ -12,7 +12,7 @@
                 </div>
             @endif
             <h4 class="ml-5">My Appointments</h4>
-            <table class="table table-striped ml-5" id="data">
+            <table class="table table-striped" id="data">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -33,7 +33,7 @@
                             <td>{{ $r->date }}</td>
                             <td>{{ $r->address }}</td>
                             <td><a href={{ '#'}} class="text-white">
-                                    <h5 class=" btn btn-success">Update</h5>
+                                    <h5 class=" btn btn-success">Appoint</h5>
                                 </a>
                                 <a href={{ '#'}} class="text-white">
                                     <h5 class=" btn btn-danger">Cancel</h5>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     protected $fillable = [
-        'fullname', 'age', 'gender', 'location','speciality',
+        'fullname','phone', 'age', 'gender', 'location','speciality',
     ];
     public function user(){
         return $this->belongsTo(User::class);

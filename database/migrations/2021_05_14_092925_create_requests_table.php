@@ -17,6 +17,8 @@ class CreateRequestsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('fullname');
+            $table->string('speciality');
+            $table->string('phone');
             $table->string('request');
             $table->string('location');
             $table->timestamps();

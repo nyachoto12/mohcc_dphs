@@ -23,9 +23,12 @@ class PatientsController extends Controller
     {
         $user = User::findOrfail($user);
         $reqs = DB::table('requests')->get();
-        $name = DB::table('doctors')->pluck('fullname');
-        $apts = DB::table('appointments')->where('fullname', $name)->get();
-        // dd($name, $apts);
+        $userz2 = Auth::user()->name;
+        $apts = DB::table('appointments')->where('patient', $userz2)->get();
+        $reqs2 = DB::table('requests')
+        ->where('fullname', $user)
+        ->get();
+        //dd($apts);
         return view('patients.index',[
            'user' => $user,
            'req' => $reqs,
@@ -43,7 +46,17 @@ class PatientsController extends Controller
         // dd($user,$users);
         return view('patient', ['userz' => $users]);
     }
+    public function patientRequest()
+    {
+        $user = Auth::user()->name;
 
+        $reqs = DB::table('requests')
+        ->where('fullname', $user)
+        ->get();
+
+        //dd($reqs,$user);
+        return view('patients.patientRequest', ['req' => $reqs]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +64,9 @@ class PatientsController extends Controller
      */
     public function create()
     {
-        return view('patients.create');
+
+        //dd($speciality);
+        return view('patients.create',);
     }
 
     /**
@@ -99,9 +114,9 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Models\User $user)
     {
-        //
+       return view('patients.edit', compact('user'));
     }
 
     /**
@@ -111,9 +126,21 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Models\User $user)
     {
-        //
+        $data = request()->validate([
+            'fullname' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'location' => 'required',
+            'occupation' => 'required',
+
+          ]);
+          //dd($data);
+          auth()->user()->patient()->update($data);
+
+          return redirect('/p/'. auth()->user()->id)->with('status','Profile Was Updated Successfully');
+
     }
 
     /**

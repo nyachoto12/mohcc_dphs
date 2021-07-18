@@ -2,7 +2,7 @@
 @section('content')
     <div class="row  ml-5">
         <div class="col-md-12 ">
-            <a href={{ '/doctor/' . auth()->user()->id }}>
+            <a href={{ '/d/' . auth()->user()->id }}>
                 <h5 class="mt-5">Back</h5>
             </a>
 

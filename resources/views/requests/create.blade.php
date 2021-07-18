@@ -33,12 +33,46 @@
                                  </div>
                              </div>
                              <div class="form-group row">
+                                <label for="phone" class="col-md-12 col-form-label ">{{ __('Phone') }}</label>
+
+                                <div class="col-md-12">
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                             <div class="form-group row">
                                 <label for="location" class="col-md-12 col-form-label ">{{ __('Where are you?') }}</label>
 
                                 <div class="col-md-12">
                                     <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location">
 
                                     @error('location')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="speciality"
+                                    class="col-md-12 col-form-label ">{{ __('Speciality?') }}</label>
+
+                                <div class="col-md-12">
+                                    <select id="speciality" class="form-control text-success" name="speciality"
+                                    required>
+                                    <option value="">Select Speciality</option>
+
+                                    @foreach($speciality as $facility)
+                                     <?php echo "<option value='$facility->name' id='$facility->name'>$facility->name</option>";
+                                     ?>
+                                    @endforeach
+                                </select>
+                                    @error('speciality')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

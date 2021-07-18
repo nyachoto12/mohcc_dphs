@@ -16,7 +16,9 @@ class AppointmentsController extends Controller
      */
     public function index()
     {
-        $apts = DB::table('appointments')->get();
+        $user = Auth::user()->name;
+        $apts = DB::table('appointments')->where('fullname', $user)->get();
+        //dd($apts);
         return view('apts.index',['apt' => $apts]);
     }
 
@@ -31,9 +33,18 @@ class AppointmentsController extends Controller
           $reqs = DB::table('requests')->get();
           $users = DB::table('users')->where('role', 'Doctor')->get();
 
-          //dd($reqs);
 
-          return view('apts.create',['req' => $reqs, 'doc' => $users]);
+          $userz = Auth::user()->id;
+          $users1 = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
+          //$users5 = DB::table('users')->where('role', 'Doctor')->get();
+          //getting requests filtered by location
+          $reqs4 = DB::table('requests')->where('speciality', $users1)->get();
+        //dd($reqs4);
+          return view('apts.create',
+          ['req' => $reqs,
+           'doc' => $users,
+            'patient' => $reqs4
+        ]);
     }
 
     /**
@@ -69,9 +80,9 @@ class AppointmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( \App\Models\Appointment $appointment)
     {
-        //
+        return view('apts.show', \compact('appointment'));
     }
 
     /**

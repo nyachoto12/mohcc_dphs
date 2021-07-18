@@ -46,7 +46,8 @@
 
     }
      </style>
-
+<link rel="stylesheet" href="{{ mix('css/app.css') }}" />
+<script defer src="{{ mix('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -82,22 +83,29 @@
                         aria-current="true">
                         <i class="fas fa-tachometer-alt fa-fw me-3 "></i><span>Main dashboard</span>
                     </a>
-                    <a href="{{ '/doctor/' . auth()->user()->id }}" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>My Profile </span>
-                    </a>
+                    <ul class="list-unstyled side">
+
+                        <li class="">
+                            <a href="#profile" class="list-group-item list-group-item-action py-2 ripple " data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Profile Management </span></a>
+
+                            <ul class="collapse list-unstyled " id="profile">
+                                <li class="m-2">
+                                    <a href="/doctor/{{Auth::user()->id}}/edit" class="btn btn-success">Update Details</a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
                     <a href="/requests" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Requests </span>
-                    </a>
-                    <a href="/apt/create" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>New Appointment </span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Schedule</span>
                     </a>
                     <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>News and Updates</span>
                     </a>
 
+                    </li>
                 </div>
             </div>
         </nav>

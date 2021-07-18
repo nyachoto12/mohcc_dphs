@@ -4,17 +4,15 @@
 
     <div class="container">
         <div class="row justify-content-center">
-
+            @if (session('status'))
+            <div class="alert alert-success mt-2" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
             <div class="card col-md-12">
                 <div class="card-header text-center text-light bg-success ">{{ $user->patient->fullname }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
                     <!--Section: Minimal statistics cards-->
                     <section>
                         <div class="row">
@@ -76,7 +74,7 @@
                                             </div>
                                         </a>
                                     @else
-
+                                      <a href="/myrequests">
                                         <div class="card-body">
 
                                             <div class="d-flex justify-content-between px-md-1">
@@ -95,7 +93,7 @@
                                             </div>
 
                                         </div>
-                                        </a>
+                                    </a>
 
                                     @endif
                                 </div>
@@ -118,7 +116,7 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                            <div class="col-xl-6 col-sm-6 col-12 mb-4">
+                            {{-- <div class="col-xl-6 col-sm-6 col-12 mb-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between px-md-1">
@@ -133,11 +131,43 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </section>
+                    <div class="row m-5">
+                        <h4 class="ml-5">My Appointments</h4>
+                        <table class="table table-striped" id="data">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Doctor Name</th>
+                                    <th scope="col">My Appointment</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($apt as $r)
+                                    <tr>
+                                        <th scope="row">{{ $r->user_id }}</th>
+                                        <td>{{ $r->fullname }}
+                                        </td>
+                                        <td>{{ $r->appointment }}</td>
 
+                                        <td>{{ $r->date }}</td>
+                                        <td>{{ $r->address }}</td>
+                                        <td>
+                                            <a href="" class="text-white">
+                                                <h5 class=" btn btn-danger">Update</h5>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
