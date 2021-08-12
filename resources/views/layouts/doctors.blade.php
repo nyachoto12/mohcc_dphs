@@ -91,7 +91,8 @@
 
                             <ul class="collapse list-unstyled " id="profile">
                                 <li class="m-2">
-                                    <a href="/doctor/{{Auth::user()->id}}/edit" class="btn btn-success">Update Details</a>
+
+                                    <a href="#" class="btn btn-success">Update Details</a>
                                 </li>
 
                             </ul>

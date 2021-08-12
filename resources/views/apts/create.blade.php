@@ -29,7 +29,7 @@
                         @foreach ($doc as $doc)
 
                         <div class="container " style="position: relative; left: 3%">
-                            <form action="/apt" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('appointment.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row d-flex">
                                     <div class="col-md-6 ">
@@ -91,7 +91,7 @@
                                                 class="col-md-12 col-form-label ">{{ __('Appointment Date') }}</label>
 
                                             <div class="col-md-12">
-                                                <input class="date form-control" type="date" class="form-control @error('date') is-invalid @enderror"
+                                                <input class="form-control" type="date" class="form-control @error('date') is-invalid @enderror"
                                                 name="date" value="{{ old('date') }}" required
                                                 autocomplete="date">
 
@@ -124,62 +124,7 @@
 
 
                                     </div>
-                                    {{-- <div class="col-md-6 mr-5">
-                                        <div class="form-group row">
-                                            <label for="fullname"
-                                                class="col-md-12 col-form-label ">{{ __('Full Name') }}</label>
 
-                                            <div class="col-md-12">
-                                                <input id="fullname" type="text"
-                                                    class="form-control @error('fullname') is-invalid @enderror"
-                                                    name="fullname" value="{{ old('fullname') }}" required
-                                                    autocomplete="fullname">
-
-                                                @error('fullname')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="location"
-                                                class="col-md-12 col-form-label ">{{ __('Where are you?') }}</label>
-
-                                            <div class="col-md-12">
-                                                <input id="location" type="text"
-                                                    class="form-control @error('location') is-invalid @enderror"
-                                                    name="location" value="{{ old('location') }}" required
-                                                    autocomplete="location">
-
-                                                @error('location')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="request"
-                                                class="col-md-12 col-form-label ">{{ __('Why are you contacting a doctor?') }}</label>
-
-                                            <div class="col-md-12">
-                                                <textarea name="request" id="request" cols="30" rows="5"
-                                                    class="form-control @error('request') is-invalid @enderror"
-                                                    value="{{ old('request') }}" required
-                                                    autocomplete="request"></textarea>
-
-
-                                                @error('request')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                    </div> --}}
 
                         @endforeach
                                     <div class="form-group row mb-0 mt-4">

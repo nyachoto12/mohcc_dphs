@@ -1,17 +1,21 @@
 @extends('layouts.header')
 @section('content')
-    <div class="row  ml-5">
-        <div class="col-md-12 ">
-            <a href={{ '/d/' . auth()->user()->id }}>
-                <h5 class="mt-5">Back</h5>
-            </a>
-
+<div class="container-fluid" >
+    <div class="row justify-content-center mt-5" >
+        <div class="col-md-11 mt-4">
             @if (session('status'))
-                <div class="alert alert-danger" role="alert">
-                    {{ session('status') }}
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+            <div class="card" >
+                <div class="card-header text-center text-light bg-dark"> <h4>My Scheduled Appointments: Week</h4>
                 </div>
-            @endif
-            <table class="table table-striped ml-5" id="data">
+
+                <div class="card-body ml-2">
+                </div>
+
+            <table class="table table-striped text-center table-responsive" id="data">
                 <thead>
                     <tr>
                         <th scope="col">Patient ID</th>
@@ -29,12 +33,10 @@
                             </td>
                             <td>{{ $r->location }}</td>
                             <td>{{ $r->request }}</td>
-                            <td><a href={{ '/doctor/' . auth()->user()->id }} class="text-white">
+                            <td><a href="{{ route('appointment.create') }}" class="text-white">
                                     <h5 class=" btn btn-success">Appoint</h5>
                                 </a>
-                                <a href={{ '/doctor/' . auth()->user()->id }} class="text-white">
-                                    <h5 class=" btn btn-danger">Remove</h5>
-                                </a>
+                              
                             </td>
                         </tr>
                     @endforeach
@@ -42,4 +44,14 @@
             </table>
         </div>
     </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-12 text-center">
+        <h6>Developed and Designed by <span class="text-success">Ngonidzashe Nyachoto</span></h6>
+    </div>
+</div>
+</div>
+</div>
+</div>
 @endsection
+

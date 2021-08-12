@@ -79,13 +79,7 @@
                         aria-current="true">
                         <i class="fas fa-tachometer-alt fa-fw me-3 "></i><span>Main dashboard</span>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Requests </span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                        <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>Schedule</span>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                    <a href="/" class="list-group-item list-group-item-action py-2 ripple ">
                         <i class="fas fa-clipboard-list text-info fa-2x me-3 mt-3"></i><span>News and Updates</span>
                     </a>
 
@@ -158,13 +152,10 @@
                     </li>
 
                     <li class="nav-item ">
-                        <a class="nav-link " href="/about"><span class=""
-                                style="position: relative; padding-right : 7px">About Us</span> </a>
+                        <a class="nav-link " href="http://www.mohcc.gov.zw/"><span class=""
+                                style="position: relative; padding-right : 7px">MoHCC Website</span> </a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="/contact"><span class=""
-                                style="position: relative; padding-right : 7px">Contact Us</span> </a>
-                    </li>
+
 
                     <!-- Icon dropdown -->
                     <li class="nav-item dropdown">

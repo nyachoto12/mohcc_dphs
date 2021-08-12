@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Patient;
 
 class PatientsController extends Controller
 {
@@ -19,21 +20,19 @@ class PatientsController extends Controller
         $this->middleware(['auth']);
         // $this->middleware(['auth','verified']);
     }
-    public function index($user)
+    public function index(\App\Models\User $user, \App\Models\Patient $patient)
     {
-        $user = User::findOrfail($user);
-        $reqs = DB::table('requests')->get();
+
         $userz2 = Auth::user()->name;
+        $userz = Auth::user()->id;
         $apts = DB::table('appointments')->where('patient', $userz2)->get();
         $reqs2 = DB::table('requests')
-        ->where('fullname', $user)
+        ->where('fullname', $userz2)
         ->get();
-        //dd($apts);
-        return view('patients.index',[
-           'user' => $user,
-           'req' => $reqs,
-           'apt'=> $apts,
-        ]);
+       $patients = DB::table('patients')->where('user_id', $userz )->get();
+
+        //dd($patients);
+        return view('patients.index', compact('patient','apts','reqs2','user', 'patients'));
     }
     public function patient()
     {
@@ -57,6 +56,7 @@ class PatientsController extends Controller
         //dd($reqs,$user);
         return view('patients.patientRequest', ['req' => $reqs]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -94,7 +94,7 @@ class PatientsController extends Controller
 
           ]);
 
-           return redirect('/patient/'. auth()->user()->id);
+          return redirect()->route('patient.index')->with("Data Created Successfully");
     }
 
     /**
@@ -103,9 +103,19 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Models\Patient $patient, \App\Models\User $user)
     {
-        //
+
+        $reqs = DB::table('requests')->get();
+        $userz2 = Auth::user()->name;
+        $userz = Auth::user()->id;
+        $apts = DB::table('appointments')->where('patient', $userz2)->get();
+        $reqs2 = DB::table('requests')
+        ->where('fullname', $userz2)
+        ->get();
+        $patients = DB::table('patients')->where('user_id', $userz )->get();
+        //dd($userz2, $apts);
+        return view('patients.show', compact('patient','apts', 'reqs2','user','patients'));
     }
 
     /**
@@ -114,9 +124,9 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\Models\User $user)
+    public function edit(\App\Models\User $user, \App\Models\Patient $patient )
     {
-       return view('patients.edit', compact('user'));
+       return view('patients.edit', compact('user', 'patient'));
     }
 
     /**
@@ -126,7 +136,7 @@ class PatientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, \App\Models\User $user)
+    public function update(Request $request, $id)
     {
         $data = request()->validate([
             'fullname' => 'required',
@@ -136,10 +146,14 @@ class PatientsController extends Controller
             'occupation' => 'required',
 
           ]);
-          //dd($data);
-          auth()->user()->patient()->update($data);
+            //get training data
+         $pData = $request->all();
+         //update training data
+          Patient::find($id)->update($pData);
 
-          return redirect('/p/'. auth()->user()->id)->with('status','Profile Was Updated Successfully');
+          //dd($trainingData);
+
+          return redirect()->route('patient.index')-> with('info','Data Updated Successfully');;
 
     }
 

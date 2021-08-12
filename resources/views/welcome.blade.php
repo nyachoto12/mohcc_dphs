@@ -9,7 +9,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url({{ asset('./img/vacc.jpeg') }})">
+          <div class="carousel-item active" style="background-image: url({{ asset('./img/vac4.jpg') }})">
             <div class="carousel-caption d-none d-md-block">
               <h3 class="display-4 text-danger" style="font-weight : bold">Covid 19 Vaccination Programme</h3>
               <p class="lead text-light" style="font-weight : bold"> Get vaccinated today to protect yourself and your beloved ones from the dangers of the Covid 19.</p>
@@ -19,17 +19,16 @@
           <div class="carousel-item" style="background-image: url({{ asset('./img/p2.jpeg') }})">
             <div class="carousel-caption d-none d-md-block">
               <h3 class="display-4 text-danger" style="font-weight : bold">Stay At Home</h3>
-              <p class="lead text-light" style="font-weight : bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, nemo possimus commodi porro iusto enim voluptatem mollitia, excepturi fuga, neque ea vero eaque
-                  assumenda amet quis nobis doloribus fugit rerum?</p>
+              <p class="lead text-light" style="font-weight : bold">Please do not make some unreasonable movements, covid-19 is real and its
+            spreading too fast. So i urge you to stay at home all the times and wash your hands regulary with running water.</p>
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url({{ asset('./img/p3.jpg') }})">
             <div class="carousel-caption d-none d-md-block ">
               <h3 class="display-4 text-danger" style="font-weight : bold">Say No to the Spreading of COVID-19</h3>
-              <p class="lead text-light" style="font-weight : bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur quas deleniti,
-                  excepturi qui tempora aspernatur debitis eaque obcaecati error autem veritatis
-                  placeat rem quidem dolorem sit ducimus consequuntur eligendi corrupti?</p>
+              <p class="lead text-light" style="font-weight : bold">Lets all practise social distance, always put on our masks all the times covering nose and mouth.
+            Covid-19 is dangerous</p>
             </div>
           </div>
         </div>
@@ -37,8 +36,13 @@
         </div>
         <div class="card-body bg-white">
             @if (session('status'))
-                <div class="alert alert-success bg-danger" role="alert">
+                <div class="alert alert-success bg-danger text-light" role="alert">
                     {{ session('status') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success bg-success text-light" role="alert">
+                    {{ session('success') }}
                 </div>
             @endif
             <div class="container-fluid mt-5">
@@ -47,108 +51,35 @@
                             <div class="container">
                                 <div class="row">
                                   <div class="col-md-12 bg-dark">
-                                    <h3 class="ml-4 text-white pt-3 pb-3 " style="">What is it About MoHCC DPHS</h3>
+                                    <h4 class="ml-4 text-white pt-3 pb-3 " style="">Ministry of Health Doctors and Patients Healthcare System</h4>
                                   </div>
-                                    <p class="ml-3 mt-5" style="font-size: 20px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                        Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                        placeat odio blanditiis rem!
+                                    <p class="ml-3 mt-5" style="font-size: 20px">
+                                        Patients in Zimbabwe finds it so difficult to access medical resources all the time when they need it.
+                                        A patient has to visit a hospital to check if there is a doctor available so that he/ she can get medical attention.
+                                        <br>
+                                        This seems to be a big problem which exists in the Ministry of Health and Child Care in our country.
                                     <br>
+                                    <span id="dots1">....</span>
+                                    <span id="more1" style="display: none;transition: 0.4s;">
+                                        <br>
+                                        This led to the development of the MoHCC DPH System, to try to minimise this issue. The system acts as a medium to facilitate communication between doctors and patients in the comfort of their home.
+<br>
+<br>
+                                        So a patient will be able to access the system from anywhee in the country, send their requests to the system and get appointments from doctors around them.
+                                    </span>
                                     <br>
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                            Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                            Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                            placeat odio blanditiis rem!</p>
+
+                                </p>
+                                 <!-- Readmore button with an onclick function-->
+                               <a onclick="myFunction1()" id="myBtn1" class=" btn btn-success rounded-0" style="width: 30%;color:#fff !important;cursor: pointer; ">Read more</a>
                                 </div>
-                                <div class="col-md-12 justify-content-right m-3">
-                                <button class="btn btn-success text-right">Read More</button>
-                                </div>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="container">
                                 <img class="img-fluid" src="{{ asset('./img/doc1.jpg') }}" >
                                 <div class="container-fluid" style=" background-color: rgba(0, 0, 0, 0);font-size: small;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="container-fluid mt-5">
-                <div class="row mt-5 bg-white">
-                    <div class="col-md-12 text-center mr-3 bg-dark text-white p-3">
-                        <h4>Services Offered at MoHCC DPHS</h4>
-                    </div>
-                </div>
-                <div class="row mt-3 ">
-
-                        <div class="col-md-3 card" style="border: none">
-                            <div class="container p-4">
-                                <div class="row">
-
-                                    <img class="img-fluid" src="{{ asset('./img/doc1.jpg') }}" >
-                                    <div class="container-fluid" style=" background-color: rgba(0, 0, 0, 0);font-size: small;">
-                                    </div>
-                                    <div class="col-md-12 pt-4">
-                                        <h3 class="bg-success p-1 text-white" style="font-size: 25px">Simplify Communication</h3>
-                                        <p class=" mt-2 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                            Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                            Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                            placeat odio blanditiis rem!</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 card"style="border: none">
-                            <div class="container p-4">
-                                <div class="row">
-
-                                    <img class="img-fluid" src="{{ asset('./img/doc1.jpg') }}" >
-                                <div class="container-fluid" style=" background-color: rgba(0, 0, 0, 0);font-size: small;">
-                                </div>
-                                <div class="col-md-12 pt-4">
-                                    <h3 class="bg-success p-1 text-white" style="font-size: 25px">Manage Patients Requests</h3>
-                                    <p class=" mt-2"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                        Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                        placeat odio blanditiis rem!</p>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 card"style="border: none">
-                            <div class="container p-4">
-                                <div class="row">
-
-                                    <img class="img-fluid" src="{{ asset('./img/doc1.jpg') }}" >
-                                <div class="container-fluid" style=" background-color: rgba(0, 0, 0, 0);font-size: small;">
-                                </div>
-                               <div class="col-md-12 pt-4">
-                                <h3 class="bg-success p-1 text-white" style="font-size: 25px">Manage Schedules</h3>
-                                <p class=" mt-2"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                    Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                    placeat odio blanditiis rem!</p>
-                               </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 card"style="border: none">
-                            <div class="container p-4">
-                                <div class="row">
-
-                                    <img class="img-fluid" src="{{ asset('./img/doc1.jpg') }}" >
-                                    <div class="container-fluid" style=" background-color: rgba(0, 0, 0, 0);font-size: small;">
-                                    </div>
-                                   <div class="col-md-12 pt-4">
-                                    <h3 class="bg-success p-1 text-white" style="font-size: 25px">Manage Appointments</h3>
-                                    <p class=" mt-2"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                        Fugit nesciunt, laudantium vel veritatis minus soluta adipisci!
-                                        Tempore dolores numquam ea magni perspiciatis fuga nobis et assumenda,
-                                        placeat odio blanditiis rem!</p>
-                                   </div>
                                 </div>
                             </div>
                         </div>
@@ -167,22 +98,23 @@
                         <div class="col-md-4 text-center">
                             <h1 class="m-2 p-2 text-success" style="font-weight: bolder">1</h1>
                             <h2 class="bg-success p-2 text-white" style="">Registration</h2>
-                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus, voluptatibus eveniet reiciendis magnam illo hic provident soluta perferendis, ipsa blanditiis ut.
-                                Similique harum repudiandae nostrum, ut assumenda aut impedit nulla.</p>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">To get access to the MoHCC DPH System, you need to have an account.
+                            So you need to register by clicking on the register link above.</p>
 
                         </div>
                         <div class="col-md-4 text-center">
                             <h1 class="m-2 p-2 text-success" style="font-weight: bolder">2</h1>
                             <h2 class="bg-success p-2 text-white" >Create your profile</h2>
-                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione et rem accusantium, repellat saepe quas perspiciatis voluptatum provident.
-                                 Reiciendis aut sit, eius amet ea aliquam tempore odio expedita animi illum?</p>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">After successful creation of your account, you will be redirected to
+                            a page where you are supposed to create your profile. Just click on the link "create profile" and enter your details
+                        in the fields</p>
 
                         </div>
                         <div class="col-md-4 text-center">
                             <h1 class="m-2 p-2 text-success" style="font-weight: bolder">3</h1>
                             <h2 class="bg-success p-2 text-white" >Access your dashboard</h2>
-                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, similique sapiente eius, omnis, animi sit placeat rem voluptatum quaerat debitis odio consectetur ex maiores
-                                molestias laborum provident voluptate suscipit et.</p>
+                            <p class=" mt-4 ml-3 text-left"style="font-size: 18px">Then from step 2, you will be redirected to your dashboard where you can access
+                            all the resources. </p>
 
                         </div>
 
@@ -204,7 +136,7 @@
                     <div class="col-md-6">
                         <h3 class="m-5">Having any issues with MoHCC DPHS, let us know below</h3>
 
-                                <form action="#" method="post" enctype="multipart/form-data">
+                                <form action="/issue" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row ">
                                         <div class="col-md-12 ">

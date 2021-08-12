@@ -69,7 +69,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto mr-5 text-white">
                         <!-- Authentication Links -->
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 MoHCC DPHS <span class="caret text-success"></span>
@@ -84,11 +84,8 @@
                                 </a>
 
                             </div>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link active " href="#"><span class=""
-                                    style="position: relative; padding-right : 7px">E-Nurse</span> </a>
-                        </li>
+                        </li> --}}
+
 {{--
                         <li class="nav-item ">
                             <a class="nav-link active " href="#"><span class=""
@@ -100,24 +97,10 @@
                             <a class="nav-link active " href="/"><span class=""
                                     style="position: relative; padding-right : 7px">Home</span> </a>
                         </li>
-
-                        <li class="nav-item ">
-                            <a class="nav-link active " href="/covid"><span class=""
-                                    style="position: relative; padding-right : 7px">Covid 19 Updates</span> </a>
-                        </li>
-
-                        {{-- <li class="nav-item ">
-                            <a class="nav-link " href="/about"><span class=""
-                                    style="position: relative; padding-right : 7px">About Us</span> </a>
-                        </li> --}}
-                        <li class="nav-item ">
-                            <a class="nav-link " href="/contact"><span class=""
-                                    style="position: relative; padding-right : 7px">Contact Us</span> </a>
-                        </li>
                         @guest
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('MoHCC DPH System') }}</a>
                             </li>
 
                             @if (Route::has('register'))
@@ -128,7 +111,7 @@
                         @else
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ route('login') }}" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -168,6 +151,23 @@
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     }
+</script>
+<script>
+    function myFunction1() {
+    var dots1 = document.getElementById("dots1");
+    var moreText = document.getElementById("more1");
+    var btnText = document.getElementById("myBtn1");
+
+    if (dots1.style.display === "none") {
+        dots1.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+    } else {
+        dots1.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+    }
+}
 </script>
 <script src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.350367076942!2d31.051604414372772!3d-17.82220308082799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e0240231b9%3A0x9aeef814fb725f74!2sMukwati+Building!5e0!3m2!1sen!2szw!4v1494425057293"></script>
 <!-- End of Google-Map -->

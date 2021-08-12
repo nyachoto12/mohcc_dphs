@@ -31,10 +31,8 @@ class AppointmentsController extends Controller
     {
           //getting requests filtered by location
           $reqs = DB::table('requests')->get();
-          $users = DB::table('users')->where('role', 'Doctor')->get();
-
-
           $userz = Auth::user()->id;
+          $users = DB::table('doctors')->where('user_id', $userz)->get();
           $users1 = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
           //$users5 = DB::table('users')->where('role', 'Doctor')->get();
           //getting requests filtered by location
@@ -70,7 +68,7 @@ class AppointmentsController extends Controller
               'address' => $data['address'],
           ]);
 
-           return redirect('/doctor/'. auth()->user()->id);
+           return redirect()->route('doctor.index');
 
     }
 
@@ -82,7 +80,8 @@ class AppointmentsController extends Controller
      */
     public function show( \App\Models\Appointment $appointment)
     {
-        return view('apts.show', \compact('appointment'));
+
+        return view('apts.show', compact('appointment'));
     }
 
     /**

@@ -15,7 +15,7 @@
                         </div>
                     @endif
                     <div class="container " style="position: relative; left: 3%">
-                        <form action="/pat" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('patient.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row d-flex">
                                 <div class="col-md-6 ">
@@ -55,7 +55,7 @@
                                         <label for="gender"
                                             class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
 
                                             <select id="gender" name="gender"
                                                 class="form-control ] @error('gender') is-invalid @enderror" name="gender"

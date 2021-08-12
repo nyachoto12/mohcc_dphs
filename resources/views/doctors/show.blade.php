@@ -37,7 +37,6 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
-
         <link href="{{ asset('./css/buttons.bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('./css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
         <link href="{{ asset('./css/buttons.dataTables.min.css') }}" rel="stylesheet">
@@ -53,7 +52,7 @@
             margin: 0 auto;
 
         }
-    <style>
+
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             background-color: rgb(177, 177, 177);
@@ -127,7 +126,7 @@
                         aria-current="true">
                         <i class="fas fa-tachometer-alt fa-fw me-3 "></i><span>Main dashboard</span>
                     </a>
-                    <a href="/doctor" class="list-group-item list-group-item-action py-2 ripple "
+                    <a href="/patient" class="list-group-item list-group-item-action py-2 ripple "
                         style="background-color: rgba(147, 165, 150, 0.856)">
                         <i class="fa fa-book text-light fa-2x me-3 mt-3"></i><span class="text-light p-1"
                             style="position: relative; top: -10px; font-weight: bold">News and Updates</span>
@@ -145,10 +144,10 @@
                             <ul class="collapse list-unstyled" id="profile">
 
                                 <li class="m-2">
-                                    @foreach ($data as $doctor)
-                                    <a href="{{ route('doctor.show',$doctor->id) }}"
-                                        class="btn btn-success pl-3 pr-3">My Profile</a>
-                                    @endforeach
+
+                                    <a href="{{ route('doctor.edit',$doctor->id) }}"
+                                        class="btn btn-success pl-3 pr-3">Update Profile</a>
+
 
                                 </li>
 
@@ -195,10 +194,14 @@
                                 style="position: relative; padding-right : 7px">Home</span> </a>
                     </li>
 
-                    <li><a class="nav-link text-success bg-dark" href="/"><span class=""
-                        style="position: relative; padding-right : 7px">
-                       Hi, {{ Auth::user()->name }} <span class="caret"></span>
-                    </a></li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-success " href="/about"><span class=""
+                                style="position: relative; padding-right : 7px">About Us</span> </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link text-success " href="/contact"><span class=""
+                                style="position: relative; padding-right : 7px">Contact Us</span> </a>
+                    </li>
 
                     <!-- Icon dropdown -->
                     <li class="nav-item dropdown">
@@ -222,19 +225,23 @@
         <!-- Navbar -->
     </header>
     <!--Main Navigation-->
-    <div class="container-fluid">
-        <div class="row justify-content-center mt-5 ml-5">
+{{-- <h5 class="text-success pt-1 pl-5 ml-5" style="position: relative; left : 90px">You are here : Home/Doctor/Your Profile</h5> --}}
+    <div class="container-fluid" >
+        <div class="row justify-content-center ml-5 mt-5" >
             <div class="col-md-11 mt-4 ml-5">
                 @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
-                @endif
-                <div class="card ml-5">
-                    <div class="card-header text-center text-light bg-dark">Dr .{{ Auth::user()->name }}'s Dashboard
+            @endif
+                <div class="card ml-5" >
+                    <div class="card-header text-center text-light bg-dark"> <h4>Dr .{{ Auth::user()->name }}</h4>
                     </div>
-                    <div class="card-body m-5">
-                   <!--Section: Minimal statistics cards-->
+
+                    <div class="card-body ml-5">
+
+
+                        <!--Section: Minimal statistics cards-->
                         <section>
                             <div class="row ">
                                 <div class="col-xl-4 col-sm-6 col-12 mb-4">
@@ -243,12 +250,14 @@
                                             <div class="d-flex justify-content-between px-md-1">
                                                 <div>
 
-                                                    @if (count($reqs) == 0)
-                                                    <h3 class="text-info">No requests yet</h3>
-                                                    @else
-                                                    <h3 class="text-info">{{ count($reqs) }}</h3>
-                                                    <p class="mb-0">Total Requests</p>
-                                                    @endif
+                                                        @if (count($reqs) == 0)
+                                                            <h3 class="text-info">No requests yet</h3>
+                                                        @else
+                                                        <a href="/requests">
+                                                            <h3 class="text-info">{{ count($reqs) }}</h3>
+                                                            <p class="mb-0">Total Requests</p>
+                                                        </a>
+                                                        @endif
 
 
                                                 </div>
@@ -258,9 +267,8 @@
                                             </div>
                                             {{-- <div class="px-md-1">
                                                 <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: 20%" aria-valuenow="80" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%"
+                                                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div> --}}
                                         </div>
@@ -268,22 +276,22 @@
                                 </div>
                                 <div class="col-xl-4 col-sm-6 col-12 mb-4">
                                     <div class="card">
-                                        <a href={{ '/appointment' }}>
-                                            <div class="card-body">
-                                                <div class="d-flex justify-content-between px-md-1">
-                                                    <div>
-                                                        @if (count($apts) == 0)
-                                                        <h4 class="text-danger">No scheduled appointments</h4>
-                                                        @else
-                                                        <h3 class="text-success">{{ count($apts) }}</h3>
-                                                        <p class="mb-0">Scheduled Appointments</p>
+                                        <a href={{ '/appointment'}}>
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between px-md-1">
+                                                <div>
+                                                    @if (count($apts) == 0)
+                                                    <h4 class="text-danger">No Appointments</h4>
+                                                @else
+                                                    <h3 class="text-success">{{ count($apts) }}</h3>
+                                                    <p class="mb-0">Scheduled Appointments</p>
 
-                                                        @endif
+                                                @endif
 
 
-                                                    </div>
-                                                </div>
                                             </div>
+                                            </div>
+                                        </div>
                                         </a>
                                     </div>
                                 </div>
@@ -313,57 +321,42 @@
                             </div>
                         </section>
 
-                    </div>
-                    <div class="card">
-                        @foreach ($data as $users )
-                        <div class="card-header text-center text-light bg-dark mb-1"><h4>Total Requests for {{$users->speciality}}</h4>
-                        </div>
-
-                        @endforeach
-
+                        <h4 class="ml-5 text-light bg-dark text-center p-1">My Scheduled Appointments: Week</h4>
                         <table class="table table-striped text-center table-responsive" id="data">
                             <thead>
                                 <tr>
-                                    <th scope="col">Patient ID</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Request</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Patient Name</th>
+                                    <th scope="col">Appointment</th>
+                                    <th scope="col">Appointment Date</th>
+                                    <th scope="col">Address</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($reqs as $r)
-
-                                <tr>
-                                    <th scope="row">{{ $r->id }}</th>
-                                    <td>{{ $r->fullname }}
-                                    </td>
-                                    <td>{{ $r->location }}</td>
-                                    <td>{{ $r->request }}</td>
-                                    <td>
-                                        Active
-                                    </td>
-                                    <td>
-                                        <a href={{ route('appointment.create') }} class="text-white">
-                                            <h5 class=" btn btn-success">Schedule An Appointment</h5>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </a>
-
+                                @foreach ($apts as $r)
+                                    <tr>
+                                        <th scope="row">{{ $r->id }}</th>
+                                        <td>{{ $r->patient }}
+                                        </td>
+                                        <td>{{ $r->appointment }}</td>
+                                        <td>{{ $r->date }}</td>
+                                        <td>{{ $r->address }}</td>
+                                        <td><a href={{ '#'}} class="text-white">
+                                                <h5 class=" btn btn-success">Edit</h5>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
 
                 </div>
-
             </div>
-
         </div>
-
-        <div class="row mt-5 ml-5">
+        <div class="row mt-5">
             <div class="col-md-12 text-center">
                 <h6>Developed and Designed by <span class="text-success">Ngonidzashe Nyachoto</span></h6>
             </div>
@@ -385,6 +378,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
+
         <script src="{{ asset('js/jquery.min.js')}}"></script>
         <script src="{{ asset('js/datatable.min.js') }}"></script>
         <script src="{{ asset('js/dt.min.js') }}"></script>

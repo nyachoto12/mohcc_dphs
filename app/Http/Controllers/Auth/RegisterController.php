@@ -34,7 +34,7 @@ class RegisterController extends Controller
     public function redirectTo(){
 
         if(Auth::user()->role=='Doctor'){
-           return 'doctor';
+           return route('doctor.create');
         }
         else{
             if(Auth::user()->role=='Patient'){

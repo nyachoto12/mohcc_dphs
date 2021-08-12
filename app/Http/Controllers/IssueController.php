@@ -12,16 +12,13 @@ class IssueController extends Controller
     }
     public function store(Request $request)
     {
-    $data = Training::create([
+    $data = \App\Models\Issue::create([
         'fullname' => $request->fullname,
         'email' => $request->email,
         'issue' => $request->issue,
-
-
-
     ]);
     //return Response::json($data);
 
-    return redirect()->route('welcome')->with("Issue Was Send Successfully");
+    return redirect('/')->with('success','Your Message Was Send Successfully');
 }
 }

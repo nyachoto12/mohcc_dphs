@@ -14,13 +14,13 @@ class RequestsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(\App\Models\Doctor $doctor)
     {
        //getting requests filtered by location
-       $reqs = DB::table('requests')->get();
+       $req = DB::table('requests')->get();
 
        //dd($reqs);
-       return view('doctors.requestsAll',['req' => $reqs]);
+       return view('doctors.requestsAll',compact('req','doctor'));
     }
     public function request($user)
     {
@@ -67,7 +67,7 @@ class RequestsController extends Controller
               'request' => $data['request'],
           ]);
 
-           return redirect('/patient/'. auth()->user()->id);
+           return redirect()->route('patient.index')->with('success','New Request Was Sent Successfully. We are finding an expert for you');
     }
 
     /**

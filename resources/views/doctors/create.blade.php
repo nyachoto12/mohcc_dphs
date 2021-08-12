@@ -15,10 +15,10 @@
                             </div>
                         @endif
                         <div class="container " style="position: relative; left: 3%">
-                            <form action="/d" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('doctor.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row d-flex">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-8 ">
                                         <div class="form-group row">
                                             <label for="fullname"
                                                 class="col-md-12 col-form-label ">{{ __('Full Name') }}</label>

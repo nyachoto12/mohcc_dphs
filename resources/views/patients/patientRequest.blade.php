@@ -4,7 +4,7 @@
 
         <div class="col-md-12 ">
             <div class="row">
-                <a href={{ '/p/' . auth()->user()->id }}>
+                <a href={{ route('patient.index') }}>
                     <h5 class="mt-5">Back</h5>
                 </a>
                 <a href="/p/create">

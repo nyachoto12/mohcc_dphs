@@ -19,32 +19,21 @@ class DoctorsController extends Controller
         $this->middleware(['auth']);
         // $this->middleware(['auth','verified']);
     }
-    public function index($user)
+    public function index(\App\Models\User $user,\App\Models\Doctor $doctor)
     {
-        $user = User:: find($user);
+
         //get all the appointments
         $userz2 = Auth::user()->name;
         $apts = DB::table('appointments')->where('fullname', $userz2)->get();
 
-        // getting all patients
-        $userz = Auth::user()->id;
-        $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
-        //$users5 = DB::table('users')->where('role', 'Doctor')->get();
-        //getting requests filtered by location
-        $reqs = DB::table('requests')->where('speciality', $users)->get();
-        // joining patient and requests table
-        $users2 = DB::table('patients')
-            ->join('requests', 'patients.id', '=', 'requests.user_id')
-            ->get();
-            $requests = DB::table('requests')->get();
-            $request = DB::table('requests')->pluck('request');
-          //dd($users,$reqs);
-        return view('doctors.index',[
-            'user' => $user,
-             'req' => $requests,
-            'patient' => $reqs,
-             'apt' => $apts,
-            ]);
+        // // getting all patients
+       $userz = Auth::user()->id;
+       $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
+
+      $reqs = DB::table('requests')->where('speciality', $users)->orderBy('created_at','asc')->get();
+      $data = DB::table('doctors')->where('user_id', $userz)->get();
+        //dd($apts, $data,$reqs);
+        return view('doctors.index', compact('doctor','reqs','data','apts'));
 
     }
     public function doctor(){
@@ -67,14 +56,10 @@ class DoctorsController extends Controller
     public function create()
     {
         $userz = Auth::user()->id;
-        // $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
-        // //$users5 = DB::table('users')->where('role', 'Doctor')->get();
-        // //getting requests filtered by location
-        // $reqs = DB::table('requests')->where('speciality', $users)->get();
         $speciality = DB::table('specialists')->get();
+        //dd($speciality);
         return view('doctors.create',
         ['speciality'=> $speciality,
-        //  'patient' => $req
         ]);
     }
 
@@ -105,7 +90,7 @@ class DoctorsController extends Controller
 
           ]);
 
-           return redirect('/doctor/'. auth()->user()->id);
+           return redirect()->route('doctor.index');
     }
 
     /**
@@ -114,9 +99,27 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Models\Doctor $doctor, \App\Models\User $user)
     {
-        //
+
+        //get all the appointments
+        $userz2 = Auth::user()->name;
+        $apts = DB::table('appointments')->where('fullname', $userz2)->get();
+
+        // getting all patients
+        $userz = Auth::user()->id;
+        $users = DB::table('doctors')->where('user_id', $userz)->pluck('speciality');
+
+        $reqs = DB::table('requests')->where('speciality', $users)->get();
+
+        $users2 = DB::table('patients')
+            ->join('requests', 'patients.id', '=', 'requests.user_id')
+            ->get();
+            $requests = DB::table('requests')->get();
+            $request = DB::table('requests')->pluck('request');
+
+        //dd($apts);
+        return view('doctors.show', compact('users','apts', 'reqs','user','users2','doctor'));
     }
 
     /**
@@ -125,10 +128,11 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\Models\User $user)
+    public function edit(\App\Models\User $user, \App\Models\Doctor $doctor)
     {
         $speciality = DB::table('specialists')->get();
-       return view('doctors.edit', compact('user','speciality'));
+        //dd($doctor);
+       return view('doctors.edit', compact('user','speciality', 'doctor'));
     }
 
     /**
@@ -152,7 +156,7 @@ class DoctorsController extends Controller
          // dd($data);
          auth()->user()->doctor()->update($data);
 
-          return redirect('/d/'. auth()->user()->id)->with('status','Profile Was Updated Successfully');
+         return redirect()->route('doctor.index')-> with('info','Data Updated Successfully');;
     }
 
     /**

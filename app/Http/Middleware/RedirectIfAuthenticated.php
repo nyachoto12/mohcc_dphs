@@ -22,11 +22,11 @@ class RedirectIfAuthenticated
         if (Auth::guard($guards)->check()) {
 
             if(Auth::user()->role=='Doctor'){
-                return 'doctor';
+                return redirect()->route('doctors.index');
              }
              else{
                  if(Auth::user()->role=='Patient'){
-                     return 'patient';
+                     return redirect()->route('patients.index');
                   }
              }
         }
